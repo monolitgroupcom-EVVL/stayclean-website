@@ -498,9 +498,81 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .info-section .content-placeholder strong { color: var(--text); }
 .info-section .content-placeholder p { margin-bottom: 18px; }
 .info-section .content-placeholder p:last-of-type { margin-bottom: 0; }
-.info-section .content-placeholder .review-author { font-weight: 700; color: var(--accent); margin-top: 24px; margin-bottom: 6px; }
-.info-section .content-placeholder .review-text { margin-bottom: 18px; color: var(--text-muted); }
-.info-section .content-placeholder .review-author:first-of-type { margin-top: 0; }
+/* ----- ВІДГУКИ: горизонтальна карусель ----- */
+.reviews { display: flex; align-items: center; gap: 14px; }
+
+.reviews__track {
+  flex: 1; min-width: 0;
+  display: flex; gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 6px 2px 10px;
+}
+.reviews__track::-webkit-scrollbar { display: none; }
+.reviews__track:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: var(--radius); }
+
+.review-card {
+  flex: 0 0 calc((100% - 40px) / 3);
+  scroll-snap-align: start;
+  display: flex; flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px 24px;
+  text-align: left;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.review-card:hover { border-color: rgba(43, 182, 115, 0.4); transform: translateY(-3px); }
+.review-card__stars { color: #ffc766; font-size: 14px; letter-spacing: 2px; margin-bottom: 14px; }
+.review-card__text { flex: 1; margin: 0 0 20px; color: var(--text-muted); font-size: 15px; line-height: 1.7; }
+.review-card__author {
+  font-weight: 700; color: var(--accent); font-size: 15px;
+  padding-top: 16px; border-top: 1px solid var(--border);
+}
+
+/* картка із запрошенням залишити відгук */
+.review-card--cta { align-items: flex-start; justify-content: center; background: var(--surface-2); }
+.review-card__icon {
+  width: 48px; height: 48px; border-radius: 14px; margin-bottom: 16px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent-soft);
+}
+.review-card__icon svg { width: 24px; height: 24px; fill: var(--accent); }
+.review-card--cta .review-card__text { flex: 0 0 auto; color: var(--text); }
+.review-card--cta .btn { width: 100%; text-align: center; }
+
+/* стрілки */
+.reviews__nav {
+  flex: 0 0 auto;
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--surface-2); border: 1px solid var(--border);
+  color: var(--text); cursor: pointer;
+  transition: 0.22s;
+}
+.reviews__nav svg {
+  width: 20px; height: 20px; fill: none; stroke: currentColor;
+  stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+}
+.reviews__nav:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.reviews__nav:disabled { opacity: 0.3; cursor: default; }
+
+/* крапки (тач-зона 44px, сама крапка маленька) */
+.reviews__dots { display: flex; justify-content: center; flex-wrap: wrap; gap: 2px; margin-top: 14px; }
+.reviews__dots button {
+  width: 44px; height: 44px; padding: 0;
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.reviews__dots button::before {
+  content: ""; display: block;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--border); transition: 0.25s;
+}
+.reviews__dots button.is-active::before { width: 24px; border-radius: 4px; background: var(--accent); }
 
 #our-services, #our-works, #about-us, #reviews, #contacts, #order-form { scroll-margin-top: 90px; }
 
@@ -591,6 +663,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 
 @media (max-width: 1024px) {
   .discounts__grid { grid-template-columns: repeat(2, 1fr); }
+  .review-card { flex: 0 0 calc((100% - 20px) / 2); }
 }
 
 @media (max-width: 768px) {
@@ -617,6 +690,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
   .service-modal__content { padding: 26px; }
   .info-section { padding: 50px 0; }
   .info-section .content-placeholder { padding: 24px; font-size: 15.5px; line-height: 1.65; }
+
+  /* На телефоні один відгук на екран, гортається пальцем — стрілки зайві */
+  .reviews__nav { display: none; }
+  .reviews { gap: 0; }
+  .review-card { flex: 0 0 100%; padding: 24px 22px; }
+  .reviews__track { gap: 14px; }
   .footer .footer__inner { flex-direction: column; align-items: center; gap: 14px; }
 }
 
