@@ -11,6 +11,11 @@
   <meta name="keywords" content="хімчистка дивана київ, хімчистка меблів, хімчистка меблів на дому київ, виклик хімчистки київ, хімчистка з виїздом київ, почистити диван вдома, чистка килимів київ, хімчистка матраца, хімчистка бровари, хімчистка ірпінь, клінінг київ, stayclean, стей клін, стей клин, стейклін, стейклин, stay clean київ" />
   <link rel="canonical" href="https://stayclean.in.ua/" />
 
+  <!-- Мовні версії цієї сторінки — для Google -->
+  <link rel="alternate" hreflang="uk" href="https://stayclean.in.ua/" />
+  <link rel="alternate" hreflang="ru" href="https://stayclean.in.ua/ru/" />
+  <link rel="alternate" hreflang="x-default" href="https://stayclean.in.ua/" />
+
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Stay Clean" />
@@ -951,8 +956,14 @@
         }
       }
 
-      document.getElementById('langSelect').addEventListener('change', function() { setLanguage(this.value); });
-      document.getElementById('langSelectMobile').addEventListener('change', function() { setLanguage(this.value); });
+      // "ru" веде на справжню окрему сторінку /ru/ (для Google), а не підміняє текст на місці —
+      // інакше вийшло б два джерела російського тексту, які з часом розійдуться.
+      function handleLangChange(value) {
+        if (value === 'ru') { window.location.href = 'ru/'; return; }
+        setLanguage(value);
+      }
+      document.getElementById('langSelect').addEventListener('change', function() { handleLangChange(this.value); });
+      document.getElementById('langSelectMobile').addEventListener('change', function() { handleLangChange(this.value); });
 
       // ===== ФОРМА =====
       const form = document.getElementById('leadForm');
