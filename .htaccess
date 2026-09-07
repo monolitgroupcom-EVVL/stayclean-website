@@ -1,0 +1,61 @@
+# ============================================================
+#  StayClean — налаштування сервера
+#  Кладеться в корінь сайту, поряд з index.html
+# ============================================================
+
+# ---------- Своя сторінка 404 ----------
+ErrorDocument 404 /404.html
+
+# ---------- Стиснення (сторінки летять у 3-4 рази менші) ----------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ---------- Кешування (повторні візити майже не вантажать мережу) ----------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg        "access plus 1 year"
+  ExpiresByType image/png         "access plus 1 year"
+  ExpiresByType image/webp        "access plus 1 year"
+  ExpiresByType image/svg+xml     "access plus 1 year"
+  ExpiresByType image/x-icon      "access plus 1 year"
+  ExpiresByType text/css          "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/html         "access plus 1 hour"
+</IfModule>
+
+# ---------- Правильні типи файлів ----------
+<IfModule mod_mime.c>
+  AddType image/svg+xml .svg
+  AddType image/webp    .webp
+  AddType text/xml      .xml
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # ---------- Один канонічний адрес: https:// без www ----------
+  # Умова з X-Forwarded-Proto потрібна, щоб не зациклитись на хостингах,
+  # де SSL завершується на проксі.
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://stayclean.in.ua%{REQUEST_URI} [R=301,L]
+
+  RewriteCond %{HTTP_HOST} ^www\.stayclean\.in\.ua$ [NC]
+  RewriteRule ^ https://stayclean.in.ua%{REQUEST_URI} [R=301,L]
+
+  # ---------- /index.html -> / (прибирає дубль сторінки) ----------
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+  RewriteRule ^index\.html$ / [R=301,L]
+
+  # ---------- /khimchystka-dyvaniv -> /khimchystka-dyvaniv/ ----------
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.*)$ /$1/ [R=301,L]
+</IfModule>
+
+# ---------- Не показувати вміст папок ----------
+Options -Indexes

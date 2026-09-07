@@ -1,0 +1,9 @@
+# Локальні бекапи — не потрібні в GitHub, вони вже збережені окремо на компʼютері
+_backup-*/
+_unused-images/
+*.backup-*.html
+*.backup-*.css
+*.backup-*.xml
+
+# Робочі файли редактора
+.vscode/
