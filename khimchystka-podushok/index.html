@@ -92,7 +92,11 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'AW-18392652062');
-    gtag('event', 'conversion', {'send_to': 'AW-18392652062/TGXQCL_XtuIcEJ6ypsJE'}); // ціль «Перегляд сторінки»
+    // ціль «Перегляд сторінки» — рахуємо один раз за візит, а не на кожній сторінці
+    if (!sessionStorage.getItem('sc_pv_sent')) {
+      gtag('event', 'conversion', {'send_to': 'AW-18392652062/TGXQCL_XtuIcEJ6ypsJE'});
+      try { sessionStorage.setItem('sc_pv_sent', '1'); } catch (e) {}
+    }
   </script>
 
   <!-- ===== MICROSOFT CLARITY ===== -->
