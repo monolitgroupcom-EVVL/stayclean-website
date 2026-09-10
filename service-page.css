@@ -236,3 +236,30 @@
   .sp-tiles, .sp-related { grid-template-columns: 1fr; }
   .sp-step { grid-template-columns: 38px 1fr; gap: 13px; padding: 16px; }
 }
+
+/* ============ БЛОГ ============ */
+.post { max-width: 820px; }
+.post h2 { font-size: 22px; margin: 34px 0 14px; }
+.post h2:first-child { margin-top: 0; }
+.post p { color: var(--text-muted); font-size: 16px; line-height: 1.8; margin: 0 0 16px; }
+.post p strong { color: var(--text); }
+.post a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.post a:hover { opacity: .8; }
+
+.post-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 26px; }
+.post-card {
+  display: flex; flex-direction: column;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 24px 26px;
+  text-decoration: none; transition: .22s;
+}
+.post-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.post-card h3 { font-size: 18px; line-height: 1.4; color: var(--text); margin: 0 0 12px; }
+.post-card p { flex: 1; color: var(--text-muted); font-size: 14.5px; line-height: 1.65; margin: 0 0 16px; }
+.post-card__more { color: var(--accent); font-weight: 700; font-size: 14.5px; }
+
+@media (max-width: 760px) {
+  .post-grid { grid-template-columns: 1fr; }
+  .post h2 { font-size: 20px; }
+  .post p { font-size: 15.5px; }
+}
