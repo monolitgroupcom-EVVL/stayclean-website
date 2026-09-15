@@ -5,6 +5,22 @@
 (function () {
   'use strict';
 
+  /* ---------- перемикач теми ---------- */
+  var themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      if (next === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', next === 'dark' ? '#0a0f0c' : '#f7faf8');
+      try { localStorage.setItem('sc_theme', next); } catch (e) {}
+    });
+  }
+
   /* ---------- мобільне меню ---------- */
   var burger = document.getElementById('hamburger');
   var mmenu = document.getElementById('mobileMenu');

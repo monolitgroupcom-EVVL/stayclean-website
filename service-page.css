@@ -125,17 +125,17 @@
   position: absolute; top: 14px; z-index: 4;
   font-size: 11px; font-weight: 700; letter-spacing: .1em;
   padding: 6px 12px; border-radius: 30px;
-  background: rgba(6, 10, 8, .78); border: 1px solid var(--border);
+  background: var(--tag-bg); border: 1px solid var(--border);
 }
 .sp-ba__tag--b { left: 14px; color: var(--text-muted); }
-.sp-ba__tag--a { right: 14px; color: #06130c; background: var(--accent); border-color: transparent; }
-.sp-ba__line { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: #fff; z-index: 5; pointer-events: none; }
+.sp-ba__tag--a { right: 14px; color: var(--on-accent); background: var(--accent); border-color: transparent; }
+.sp-ba__line { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: var(--tag-text); z-index: 5; pointer-events: none; }
 .sp-ba__knob {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
   width: 40px; height: 40px; border-radius: 50%;
-  background: #fff; color: #0a1410;
+  background: var(--tag-text); color: #0a1410;
   display: flex; align-items: center; justify-content: center;
-  font-size: 15px; font-weight: 700; box-shadow: 0 4px 16px rgba(0,0,0,.45);
+  font-size: 15px; font-weight: 700; box-shadow: 0 4px 16px var(--shadow-xl);
 }
 .sp-ba__cap { padding: 16px 20px; color: var(--text-muted); font-size: 14px; }
 

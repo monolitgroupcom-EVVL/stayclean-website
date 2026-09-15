@@ -12,7 +12,45 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+/* ===== СВІТЛА ТЕМА — за замовчуванням ===== */
 :root {
+  --bg: #f7faf8;
+  --surface: #ffffff;
+  --surface-2: #eef4f0;
+  --border: #dbe6df;
+  --accent: #107a48;
+  --accent-dim: #0b6038;
+  --accent-soft: rgba(16, 122, 72, 0.10);
+  --accent-ring: rgba(16, 122, 72, 0.35);
+  --accent-glow: rgba(16, 122, 72, 0.22);
+  --on-accent: #ffffff;
+  --text: #14201a;
+  --text-muted: #56675d;
+  --text-faint: #84968c;
+  --danger: #c92a2a;
+  --header-bg: rgba(255, 255, 255, 0.88);
+  --menu-bg: rgba(255, 255, 255, 0.98);
+  --overlay: rgba(14, 26, 19, 0.45);
+  --tag-bg: rgba(20, 32, 26, 0.72);
+  --tag-text: #ffffff;
+  --star: #e0a418;
+  --shadow-lg: rgba(20, 40, 30, 0.14);
+  --shadow-xl: rgba(20, 40, 30, 0.20);
+  --ph-a: #e7eee9;
+  --ph-b: #dde7e0;
+  --ph-c: #e3efe8;
+  --ph-d: #d7e8dd;
+  --footer-bg: #14201a;
+  --footer-logo: #ffffff;
+  --footer-text: #b9c7bf;
+  --footer-faint: #7d8f85;
+  --footer-accent: #4ecf8d;
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+
+/* ===== ТЕМНА ТЕМА — вмикається кнопкою ===== */
+[data-theme="dark"] {
   --bg: #0a0f0c;
   --surface: #121813;
   --surface-2: #171f19;
@@ -20,11 +58,30 @@ html { scroll-behavior: smooth; }
   --accent: #2bb673;
   --accent-dim: #1f8f59;
   --accent-soft: rgba(43, 182, 115, 0.12);
+  --accent-ring: rgba(34, 224, 122, 0.35);
+  --accent-glow: rgba(34, 224, 122, 0.25);
+  --on-accent: #06130c;
   --text: #f3f7f4;
   --text-muted: #9fb0a4;
+  --text-faint: #5c6b60;
   --danger: #ff6b6b;
-  --radius: 18px;
-  --radius-sm: 10px;
+  --header-bg: rgba(10, 15, 12, 0.9);
+  --menu-bg: rgba(10, 15, 12, 0.98);
+  --overlay: rgba(4, 8, 5, 0.82);
+  --tag-bg: rgba(6, 12, 8, 0.65);
+  --tag-text: #ffffff;
+  --star: #ffc766;
+  --shadow-lg: rgba(0, 0, 0, 0.35);
+  --shadow-xl: rgba(0, 0, 0, 0.55);
+  --ph-a: #1a221c;
+  --ph-b: #171f19;
+  --ph-c: #12241a;
+  --ph-d: #0f1d16;
+  --footer-bg: #060907;
+  --footer-logo: #ffffff;
+  --footer-text: #9fb0a4;
+  --footer-faint: #7d8f85;
+  --footer-accent: #2bb673;
 }
 
 body {
@@ -48,7 +105,7 @@ a { color: inherit; }
    Без height:auto браузер сприймає цю висоту буквально й розтягує фото. */
 img { max-width: 100%; height: auto; }
 
-::selection { background: var(--accent); color: #06130c; }
+::selection { background: var(--accent); color: var(--on-accent); }
 
 /* focus visibility (accessibility floor) */
 a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-visible {
@@ -62,7 +119,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 
 /* ----- ШАПКА ----- */
 .header {
-  background: rgba(10, 15, 12, 0.9);
+  background: var(--header-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
@@ -165,7 +222,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .mobile-menu {
   display: none;
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(10, 15, 12, 0.98);
+  background: var(--menu-bg);
   z-index: 999;
   padding-top: 90px;
   overflow-y: auto;
@@ -219,7 +276,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
   text-transform: uppercase;
   color: var(--accent);
   background: var(--accent-soft);
-  border: 1px solid rgba(34,224,122,0.35);
+  border: 1px solid var(--accent-ring);
   padding: 6px 16px;
   border-radius: 30px;
   margin-bottom: 22px;
@@ -242,7 +299,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .hero__image img {
   width: 100%; height: auto; border-radius: var(--radius);
   border: 1px solid var(--border);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  box-shadow: 0 30px 80px var(--shadow-xl);
 }
 
 /* ----- КНОПКИ ----- */
@@ -259,14 +316,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 }
 .btn-primary {
   background: var(--accent);
-  color: #06130c;
+  color: var(--on-accent);
   border-color: var(--accent);
 }
 .btn-primary:hover {
   background: var(--accent-dim);
   border-color: var(--accent-dim);
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(34,224,122,0.25);
+  box-shadow: 0 10px 24px var(--accent-glow);
 }
 .btn-ghost {
   background: transparent;
@@ -318,7 +375,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .modal-preview__card:hover {
   transform: translateY(-6px);
   border-color: var(--accent);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+  box-shadow: 0 16px 40px var(--shadow-lg);
 }
 .modal-preview__card .icon-wrap {
   width: 60px; height: 60px;
@@ -341,7 +398,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .service-modal {
   display: none;
   position: fixed; inset: 0;
-  background: rgba(4, 8, 5, 0.82);
+  background: var(--overlay);
   z-index: 10000;
   justify-content: center; align-items: center;
   padding: 20px; box-sizing: border-box;
@@ -355,7 +412,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
   border-radius: 22px;
   padding: 38px;
   position: relative;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  box-shadow: 0 30px 80px var(--shadow-xl);
 }
 .service-modal__close {
   position: absolute; top: 14px; right: 16px;
@@ -435,8 +492,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
   position: absolute; top: 12px; left: 14px;
   font-size: 11px; font-weight: 700;
   letter-spacing: 0.08em; text-transform: uppercase;
-  color: #fff;
-  background: rgba(6, 12, 8, 0.65);
+  color: var(--tag-text);
+  background: var(--tag-bg);
   padding: 5px 12px;
   border-radius: 20px;
   backdrop-filter: blur(4px);
@@ -445,13 +502,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .ba-label-after {
   left: auto; right: 14px;
   background: var(--accent);
-  color: #06130c;
+  color: var(--on-accent);
 }
 .ba-slider .ba-pane.before {
-  background: repeating-linear-gradient(135deg, #1a221c, #1a221c 10px, #171f19 10px, #171f19 20px);
+  background: repeating-linear-gradient(135deg, var(--ph-a), var(--ph-a) 10px, var(--ph-b) 10px, var(--ph-b) 20px);
 }
 .ba-slider .ba-pane.after {
-  background: repeating-linear-gradient(135deg, #12241a, #12241a 10px, #0f1d16 10px, #0f1d16 20px);
+  background: repeating-linear-gradient(135deg, var(--ph-c), var(--ph-c) 10px, var(--ph-d) 10px, var(--ph-d) 20px);
   color: var(--accent);
   clip-path: inset(0 50% 0 0);
 }
@@ -473,8 +530,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
   border-radius: 50%;
   transform: translate(-50%, -50%);
   display: flex; align-items: center; justify-content: center;
-  color: #06130c; font-weight: 900; font-size: 14px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+  color: var(--on-accent); font-weight: 900; font-size: 14px;
+  box-shadow: 0 4px 14px var(--shadow-lg);
   pointer-events: none;
 }
 .ba-info { padding: 20px 22px 24px; }
@@ -525,8 +582,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
   text-align: left;
   transition: border-color 0.25s, transform 0.25s;
 }
-.review-card:hover { border-color: rgba(43, 182, 115, 0.4); transform: translateY(-3px); }
-.review-card__stars { color: #ffc766; font-size: 14px; letter-spacing: 2px; margin-bottom: 14px; }
+.review-card:hover { border-color: var(--accent-ring); transform: translateY(-3px); }
+.review-card__stars { color: var(--star); font-size: 14px; letter-spacing: 2px; margin-bottom: 14px; }
 .review-card__text { flex: 1; margin: 0 0 20px; color: var(--text-muted); font-size: 15px; line-height: 1.7; }
 .review-card__author {
   font-weight: 700; color: var(--accent); font-size: 15px;
@@ -592,7 +649,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
   color: var(--text);
   transition: 0.25s;
 }
-.form-group input::placeholder { color: #5c6b60; }
+.form-group input::placeholder { color: var(--text-faint); }
 .form-group input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px var(--accent-soft); }
 .form-group.error input { border-color: var(--danger) !important; background-color: rgba(255,107,107,0.06) !important; box-shadow: 0 0 0 3px rgba(255,107,107,0.15) !important; }
 .form-group .error-message { display: none; color: var(--danger); font-size: 13.5px; margin-top: 6px; }
@@ -627,11 +684,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 .hp-field { position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
 /* ----- ФУТЕР ----- */
-.footer { background: #060907; color: var(--text-muted); padding: 0 0 10px 0; border-top: 1px solid var(--border); }
-.footer .logo { color: #fff; font-size: 22px; font-weight: 900; text-decoration: none; }
+.footer { background: var(--footer-bg); color: var(--text-muted); padding: 0 0 10px 0; border-top: 1px solid var(--border); }
+.footer .logo { color: var(--footer-logo); font-size: 22px; font-weight: 900; text-decoration: none; }
 .footer a { color: var(--text-muted); text-decoration: none; transition: 0.2s; display: inline-block; padding: 9px 0; }
 .footer a:hover { color: var(--accent); }
-.footer__bottom { padding: 15px 0; text-align: center; font-size: 13px; color: #5c6b60; }
+.footer__bottom { padding: 15px 0; text-align: center; font-size: 13px; color: var(--text-faint); }
 
 /* ----- ПЛАВАЮЧА КНОПКА ----- */
 .floating-contact {
@@ -646,7 +703,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
   display: flex; align-items: center; justify-content: center;
   background: var(--surface);
   border: 1px solid var(--border);
-  box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+  box-shadow: 0 10px 26px var(--shadow-lg);
   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 .floating-contact__btn:hover { transform: translateY(-3px) scale(1.05); border-color: var(--accent); }
@@ -748,3 +805,40 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 
 @media (max-width: 900px) { .areas-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 560px) { .areas-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* =========================================================
+   ТЕМИ: виправлення та перемикач
+   ========================================================= */
+
+/* .nav a перебивав .btn-primary за специфічністю — текст кнопки ставав сірим */
+.nav a.btn-primary, .nav a.btn-primary:hover { color: var(--on-accent); }
+
+/* підвал лишається темним в обох темах — власні кольори тексту */
+.footer { color: var(--footer-text); }
+.footer a { color: var(--footer-text); }
+.footer a:hover { color: var(--footer-accent); }
+.footer__bottom { color: var(--footer-faint); }
+
+/* логотип: окремий файл під кожну тему */
+.logo img.logo-dark { display: none; }
+[data-theme="dark"] .logo img.logo-light { display: none; }
+[data-theme="dark"] .logo img.logo-dark { display: block; }
+
+/* ----- КНОПКА ПЕРЕМИКАННЯ ТЕМИ ----- */
+.theme-toggle {
+  width: 40px; height: 40px; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 50%; cursor: pointer; color: var(--text);
+  transition: .22s; padding: 0;
+}
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+.theme-toggle svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+
+@media (max-width: 480px) {
+  .theme-toggle { width: 36px; height: 36px; }
+  .theme-toggle svg { width: 17px; height: 17px; }
+}
