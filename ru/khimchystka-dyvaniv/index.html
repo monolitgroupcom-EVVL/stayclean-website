@@ -150,8 +150,8 @@
     })(window, document, "clarity", "script", "yajnhabjn2");
   </script>
 
-  <link rel="stylesheet" href="../../style.css?v=2" />
-  <link rel="stylesheet" href="../../service-page.css?v=2" />
+  <link rel="stylesheet" href="../../style.css?v=3" />
+  <link rel="stylesheet" href="../../service-page.css?v=3" />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <!-- тема: світла за замовчуванням, темна — якщо користувач обрав кнопкою -->
   <script>
@@ -349,13 +349,15 @@
             <div class="form-group">
               <label for="spName">Ваше имя</label>
               <input type="text" id="spName" name="Имя" required>
+              <div class="error-message" id="spNameError">Имя не должно содержать цифр</div>
             </div>
             <div class="form-group">
               <label for="spPhone">Телефон</label>
               <div class="phone-input-wrapper">
                 <span class="prefix">+380</span>
-                <input type="tel" id="spPhone" name="Телефон" inputmode="numeric" required>
+                <input type="tel" id="spPhone" name="Телефон" inputmode="numeric" pattern="[0-9]{9}" required>
               </div>
+              <div class="error-message" id="spPhoneError">Введите 9 цифр номера</div>
             </div>
             <button type="submit" class="btn btn-primary">Отправить</button>
           </form>
@@ -400,6 +402,6 @@
     <a href="tel:+380677088425" class="floating-contact__btn floating-contact__phone" title="Позвонить" aria-label="Позвонить"><img src="../../images/icons/phone.svg" alt="" width="22" height="22" aria-hidden="true"></a>
   </div>
 
-  <script src="../../service-page.js?v=2"></script>
+  <script src="../../service-page.js?v=3"></script>
 </body>
 </html>

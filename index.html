@@ -169,7 +169,7 @@
   </script>
   <!-- ===== END MICROSOFT CLARITY ===== -->
 
-  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="stylesheet" href="style.css?v=3" />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <!-- тема: світла за замовчуванням, темна — якщо користувач обрав кнопкою -->
   <script>
@@ -1187,6 +1187,19 @@
       function validateName(value) { return value.trim().length > 0 && !/\d/.test(value); }
       function validatePhone(value) { return /^\d{9}$/.test(value); }
 
+      // Людина часто вставляє номер разом із кодом країни: "+380 50 037 84 62"
+      // або в локальному форматі "050...". Прибираємо префікси, інакше код країни
+      // лишиться в номері, а справжні цифри обріжуться — і номер стане чужим.
+      function normalizePhone(raw) {
+        var d = raw.replace(/\D/g, '');
+        while (d.length > 9) {
+          if (d.indexOf('380') === 0) { d = d.slice(3); }
+          else if (d.charAt(0) === '0') { d = d.slice(1); }
+          else { break; }
+        }
+        return d.slice(0, 9);
+      }
+
       nameInput.addEventListener('input', function() {
         nameGroup.classList.toggle('error', !validateName(this.value));
       });
@@ -1195,7 +1208,7 @@
       // ДО очищення від нецифрових символів і ламав вставку номера через Ctrl+V).
       // Тепер довжина обмежується тільки після видалення нецифрових символів.
       phoneInput.addEventListener('input', function() {
-        this.value = this.value.replace(/\D/g, '').slice(0, 9);
+        this.value = normalizePhone(this.value);
         phoneGroup.classList.toggle('error', !validatePhone(this.value));
       });
 

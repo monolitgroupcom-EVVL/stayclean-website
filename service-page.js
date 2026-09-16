@@ -132,22 +132,74 @@
   /* ---------- форма заявки ---------- */
   var form = document.getElementById('spForm');
   if (form) {
+    var isRu = document.documentElement.lang === 'ru';
+    var nameInput = form.querySelector('#spName');
     var phone = form.querySelector('#spPhone');
-    if (phone) {
+    var honeypot = form.querySelector('#spWebsite');
+    var nameGroup = nameInput ? nameInput.closest('.form-group') : null;
+    var phoneGroup = phone ? phone.closest('.form-group') : null;
+
+    function validateName(v) { return v.trim().length > 0 && !/\d/.test(v); }
+    function validatePhone(v) { return /^\d{9}$/.test(v); }
+
+    // Людина часто вставляє номер разом із кодом країни: "+380 50 037 84 62"
+    // або в локальному форматі "050...". Прибираємо префікси, інакше код країни
+    // залишиться в номері, а справжні цифри обріжуться — і номер стане чужим.
+    function normalizePhone(raw) {
+      var d = raw.replace(/\D/g, '');
+      while (d.length > 9) {
+        if (d.indexOf('380') === 0) { d = d.slice(3); }
+        else if (d.charAt(0) === '0') { d = d.slice(1); }
+        else { break; }
+      }
+      return d.slice(0, 9);
+    }
+
+    if (nameInput && nameGroup) {
+      nameInput.addEventListener('input', function () {
+        nameGroup.classList.toggle('error', !validateName(this.value));
+      });
+    }
+    if (phone && phoneGroup) {
+      // maxlength не ставимо: він ріже "сирий" рядок до очищення й ламає вставку
       phone.addEventListener('input', function () {
-        phone.value = phone.value.replace(/\D/g, '').slice(0, 9);
+        this.value = normalizePhone(this.value);
+        phoneGroup.classList.toggle('error', !validatePhone(this.value));
       });
     }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+
+      if (honeypot && honeypot.value.trim() !== '') { return; }
+
+      var isValid = true;
+      if (nameInput && nameGroup) {
+        if (!validateName(nameInput.value)) { nameGroup.classList.add('error'); isValid = false; }
+        else { nameGroup.classList.remove('error'); }
+      }
+      if (phone && phoneGroup) {
+        if (!validatePhone(phone.value)) { phoneGroup.classList.add('error'); isValid = false; }
+        else { phoneGroup.classList.remove('error'); }
+      }
+      if (!isValid) {
+        if (nameGroup && nameGroup.classList.contains('error')) { nameInput.focus(); }
+        else if (phone) { phone.focus(); }
+        return;
+      }
+
       var btn = form.querySelector('button[type="submit"]');
       var original = btn ? btn.textContent : '';
-      if (btn) { btn.disabled = true; btn.textContent = 'Надсилаємо…'; }
+      if (btn) { btn.disabled = true; btn.textContent = isRu ? 'Отправляем…' : 'Надсилаємо…'; }
+
+      // Код країни додаємо тільки у дані, що відправляються —
+      // саме поле не чіпаємо, щоб не зіпсувалось при поверненні "назад".
+      var data = new FormData(form);
+      if (phone) { data.set(phone.name, '+380' + phone.value); }
 
       fetch(form.action, {
         method: 'POST',
-        body: new FormData(form),
+        body: data,
         headers: { Accept: 'application/json' }
       })
         .then(function (res) {
@@ -160,7 +212,9 @@
         })
         .catch(function () {
           if (btn) { btn.disabled = false; btn.textContent = original; }
-          alert('Не вдалося надіслати заявку. Зателефонуйте, будь ласка: +38 (067) 708-84-25');
+          alert(isRu
+            ? 'Не удалось отправить заявку. Позвоните, пожалуйста: +38 (067) 708-84-25'
+            : 'Не вдалося надіслати заявку. Зателефонуйте, будь ласка: +38 (067) 708-84-25');
         });
     });
   }
