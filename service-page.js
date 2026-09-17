@@ -67,12 +67,16 @@
     var line = view.querySelector('.sp-ba__line');
     if (!after || !line) return;
 
+    // pos — єдине джерело правди про позицію повзунка.
+    // Раніше перетягування його не оновлювало, тому після миші
+    // стрілки на клавіатурі стрибали назад на 50%.
+    var pos = 50;
     var set = function (pct) {
-      pct = Math.max(2, Math.min(98, pct));
-      after.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
-      line.style.left = pct + '%';
+      pos = Math.max(2, Math.min(98, pct));
+      after.style.clipPath = 'inset(0 ' + (100 - pos) + '% 0 0)';
+      line.style.left = pos + '%';
+      view.setAttribute('aria-valuenow', Math.round(pos));
     };
-    set(50);
 
     var dragging = false;
     var moveTo = function (clientX) {
@@ -97,12 +101,19 @@
     /* доступність з клавіатури */
     view.setAttribute('tabindex', '0');
     view.setAttribute('role', 'slider');
-    view.setAttribute('aria-label', 'Порівняння до і після чистки');
-    var pos = 50;
+    view.setAttribute('aria-label', document.documentElement.lang === 'ru'
+      ? 'Сравнение до и после чистки'
+      : 'Порівняння до і після чистки');
+    // role="slider" без valuemin/valuemax/valuenow — невалідний ARIA:
+    // зчитувач екрана оголошує повзунок без значення.
+    view.setAttribute('aria-valuemin', '0');
+    view.setAttribute('aria-valuemax', '100');
     view.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowLeft') { pos = Math.max(2, pos - 5); set(pos); e.preventDefault(); }
-      if (e.key === 'ArrowRight') { pos = Math.min(98, pos + 5); set(pos); e.preventDefault(); }
+      if (e.key === 'ArrowLeft') { set(pos - 5); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { set(pos + 5); e.preventDefault(); }
     });
+
+    set(50);
   });
 
   /* ---------- плаваючі кнопки: ховаємо над формою заявки ---------- */

@@ -240,11 +240,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 }
 .mobile-nav a:hover { color: var(--accent); }
 .mobile-contacts { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-.mobile-phone { font-size: 19px; font-weight: 700; color: var(--accent); text-decoration: none; }
+/* min-height 44px — мінімальний розмір зони натискання на телефоні */
+.mobile-phone {
+  font-size: 19px; font-weight: 700; color: var(--accent); text-decoration: none;
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 8px;
+}
 .mobile-socials { display: flex; gap: 14px; justify-content: center; }
 .mobile-socials .messenger-icon { width: 46px; height: 46px; }
 .mobile-socials .messenger-icon img { width: 24px; height: 24px; }
-.mobile-contacts .language-selector select { font-size: 15px; padding: 8px 14px; height: 38px; }
+.mobile-contacts .language-selector select { font-size: 15px; padding: 8px 14px; height: 44px; }
 
 /* ----- HERO ----- */
 .hero {
@@ -826,11 +830,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, [tabindex]:focus-vis
 
 /* ----- КНОПКА ПЕРЕМИКАННЯ ТЕМИ ----- */
 .theme-toggle {
+  position: relative;
   width: 40px; height: 40px; flex-shrink: 0;
   display: inline-flex; align-items: center; justify-content: center;
   background: var(--surface-2); border: 1px solid var(--border);
   border-radius: 50%; cursor: pointer; color: var(--text);
   transition: .22s; padding: 0;
+}
+/* Кружечок лишається маленьким, але натискати можна по зоні 44×44 —
+   мінімум для пальця. Псевдоелемент не займає місця в розмітці,
+   тому шапка не з'їжджає. */
+.theme-toggle::after {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  width: 44px; height: 44px; transform: translate(-50%, -50%);
 }
 .theme-toggle:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 .theme-toggle svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
