@@ -1236,9 +1236,21 @@
           gtag('event', 'conversion', { 'send_to': 'AW-18392652062/xONRCNSUuuwcEJ6ypsJE' });
         }
       }
+      // Окрема конверсія в Google Ads під кожен канал зв'язку (дзвінок/Viber/Telegram/Instagram),
+      // щоб бачити в рекламному кабінеті не тільки заявки з форми, а й прямі контакти.
+      var GOOGLE_CONTACT_CONVERSION_IDS = {
+        'Phone': 'AW-18392652062/GjE5CN6Q8_kcEJ6ypsJE',
+        'Viber': 'AW-18392652062/xnDXCPO-8fkcEJ6ypsJE',
+        'Telegram': 'AW-18392652062/5IXJCOy89fkcEJ6ypsJE',
+        'Instagram': 'AW-18392652062/RjACCO-89fkcEJ6ypsJE'
+      };
       function trackGoogleContact(channel) {
         if (typeof gtag !== 'undefined') {
           gtag('event', 'contact', { 'event_category': 'Contact', 'event_label': channel });
+          var conversionId = GOOGLE_CONTACT_CONVERSION_IDS[channel];
+          if (conversionId) {
+            gtag('event', 'conversion', { 'send_to': conversionId });
+          }
         }
       }
       function trackContact() {
