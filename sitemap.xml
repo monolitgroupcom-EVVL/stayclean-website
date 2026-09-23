@@ -148,34 +148,86 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- ===== Блог ===== -->
+  <!-- ===== Блог (uk) ===== -->
   <url>
     <loc>https://stayclean.in.ua/blog/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://stayclean.in.ua/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://stayclean.in.ua/ru/blog/"/>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://stayclean.in.ua/blog/yak-vyvesty-plyamu-vid-vyna/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://stayclean.in.ua/blog/yak-vyvesty-plyamu-vid-vyna/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://stayclean.in.ua/ru/blog/yak-vyvesty-plyamu-vid-vyna/"/>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://stayclean.in.ua/blog/pylovi-klishchi-v-matratsi/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://stayclean.in.ua/blog/pylovi-klishchi-v-matratsi/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://stayclean.in.ua/ru/blog/pylovi-klishchi-v-matratsi/"/>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://stayclean.in.ua/blog/skilky-sokhne-dyvan/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://stayclean.in.ua/blog/skilky-sokhne-dyvan/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://stayclean.in.ua/ru/blog/skilky-sokhne-dyvan/"/>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://stayclean.in.ua/blog/yak-chasto-chystyty-mebli/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://stayclean.in.ua/blog/yak-chasto-chystyty-mebli/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://stayclean.in.ua/ru/blog/yak-chasto-chystyty-mebli/"/>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- ===== Блог (ru) ===== -->
+  <url>
+    <loc>https://stayclean.in.ua/ru/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://stayclean.in.ua/blog/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://stayclean.in.ua/ru/blog/"/>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://stayclean.in.ua/ru/blog/yak-vyvesty-plyamu-vid-vyna/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://stayclean.in.ua/blog/yak-vyvesty-plyamu-vid-vyna/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://stayclean.in.ua/ru/blog/yak-vyvesty-plyamu-vid-vyna/"/>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://stayclean.in.ua/ru/blog/pylovi-klishchi-v-matratsi/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://stayclean.in.ua/blog/pylovi-klishchi-v-matratsi/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://stayclean.in.ua/ru/blog/pylovi-klishchi-v-matratsi/"/>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://stayclean.in.ua/ru/blog/skilky-sokhne-dyvan/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://stayclean.in.ua/blog/skilky-sokhne-dyvan/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://stayclean.in.ua/ru/blog/skilky-sokhne-dyvan/"/>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://stayclean.in.ua/ru/blog/yak-chasto-chystyty-mebli/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://stayclean.in.ua/blog/yak-chasto-chystyty-mebli/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://stayclean.in.ua/ru/blog/yak-chasto-chystyty-mebli/"/>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
