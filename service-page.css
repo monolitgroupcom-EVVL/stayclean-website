@@ -1,265 +1,196 @@
 /* =========================================================
-   STAY CLEAN — стилі сторінок послуг
-   Підключається ПІСЛЯ style.css і тільки на сторінках послуг.
-   Головна сторінка (index.html) цей файл не використовує.
+   STAY CLEAN — сторінки послуг, міст і блогу (стиль «Бенто»)
+   Підключається ПІСЛЯ style.css. Головна цей файл не використовує.
    ========================================================= */
 
 /* ----- хлібні крихти ----- */
-.sp-crumbs {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
-  font-size: 13.5px; color: var(--text-muted); margin-bottom: 22px;
-}
-.sp-crumbs a {
-  color: var(--text-muted); text-decoration: none; transition: color .2s;
-  display: inline-flex; align-items: center; min-height: 44px; /* зона натискання пальцем */
-}
+.sp-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 13.5px; font-weight: 600; color: var(--text-muted); margin-bottom: 10px; }
+.sp-crumbs a { color: var(--text-muted); display: inline-flex; align-items: center; min-height: 44px; transition: color .2s; }
 .sp-crumbs a:hover { color: var(--accent); }
 .sp-crumbs span[aria-current] { color: var(--text); }
-.sp-crumbs .sep { opacity: .5; }
+.sp-crumbs .sep { opacity: .45; }
 
-/* ----- шапка сторінки ----- */
-/* body вже має padding-top під фіксовану шапку, тому тут відступ невеликий */
-.sp-hero { padding: 44px 0 50px; background: var(--bg); }
-.sp-hero__grid {
-  display: grid; grid-template-columns: 1.15fr .85fr; gap: 46px; align-items: start;
-}
-.sp-hero .icon-wrap {
-  width: 60px; height: 60px; border-radius: 16px;
-  background: var(--accent-soft);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 20px;
-}
-.sp-hero .icon-wrap img { width: 32px; height: 32px; }
-.sp-hero h1 {
-  font-size: clamp(28px, 4vw, 42px);
-  font-weight: 800; line-height: 1.15; margin-bottom: 18px;
+/* ----- перший екран сторінки ----- */
+.sp-hero { padding: 6px 0 0; }
+.sp-hero > .container > h1, .sp-hero__grid h1 {
+  font-size: clamp(34px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.045em; margin-bottom: 18px; text-wrap: balance;
 }
 .sp-hero h1 span { color: var(--accent); }
-.sp-lead { font-size: 16.5px; line-height: 1.75; color: var(--text-muted); margin-bottom: 26px; }
-.sp-hero__cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.sp-lead { font-size: 17.5px; line-height: 1.7; color: var(--text-muted); max-width: 62ch; }
+.sp-hero__cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: auto; padding-top: 30px; }
 
-/* ----- бічна картка з ціною ----- */
-.sp-pricecard {
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 26px 24px;
-  position: sticky; top: 96px;
-}
-.sp-pricecard__from {
-  font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--text-muted); margin-bottom: 4px;
-}
-.sp-pricecard__val {
-  font-family: 'Manrope', sans-serif; font-weight: 800;
-  font-size: 34px; color: var(--accent); line-height: 1.1; margin-bottom: 18px;
-}
-.sp-pricecard .price-table { margin-bottom: 20px; }
-.sp-pricecard .btn { width: 100%; text-align: center; }
-.sp-note {
-  display: flex; gap: 9px; align-items: flex-start;
-  font-size: 13px; color: var(--text-muted); margin-top: 14px; line-height: 1.55;
-}
-.sp-note::before { content: "✓"; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+/* сторінки блогу: заголовок у білій плитці */
+.sp-hero > .container > h1 { background: var(--surface); border-radius: var(--radius) var(--radius) 0 0; padding: 44px 44px 0; margin: 0; }
+.sp-hero > .container > h1 + .sp-lead { background: var(--surface); border-radius: 0 0 var(--radius) var(--radius); padding: 18px 44px 44px; max-width: none; }
 
-/* ----- загальна секція ----- */
-.sp-section { padding: 58px 0; background: var(--bg); }
-.sp-section.alt { background: var(--bg); }
-.sp-section h2 {
-  font-size: clamp(22px, 3vw, 30px); font-weight: 800;
-  margin-bottom: 12px; color: var(--text);
-}
-.sp-section > .container > p { color: var(--text-muted); font-size: 15.5px; max-width: 760px; }
-.sp-section h2 + p { margin-bottom: 30px; }
+/* сторінки послуг і міст: дві плитки — опис + ціни */
+.sp-hero__grid { display: grid; grid-template-columns: 7fr 5fr; gap: var(--gap); align-items: stretch; }
+.sp-hero__grid > div:first-child { background: var(--surface); border-radius: var(--radius); padding: 44px; display: flex; flex-direction: column; }
+.sp-hero .icon-wrap { width: 54px; height: 54px; border-radius: 15px; background: var(--accent-soft); display: grid; place-items: center; margin-bottom: 22px; }
+.sp-hero .icon-wrap img { width: 30px; height: 30px; }
 
-/* ----- плитки «які забруднення» ----- */
-.sp-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 26px; }
-.sp-tile {
-  background: var(--surface-2); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); padding: 18px 20px;
-  font-size: 15px; color: var(--text);
-  display: flex; gap: 11px; align-items: flex-start; line-height: 1.5;
-}
-.sp-tile::before { content: "•"; color: var(--accent); font-weight: 700; font-size: 18px; line-height: 1.2; }
-.sp-tile b { display: block; font-weight: 700; margin-bottom: 2px; }
-.sp-tile small { color: var(--text-muted); font-size: 13.5px; }
+.sp-pricecard { background: var(--surface); border-radius: var(--radius); padding: 32px; position: sticky; top: 96px; align-self: start; }
+.sp-pricecard__from { font-size: 13px; font-weight: 700; color: var(--text-muted); }
+.sp-pricecard__val { font-size: clamp(38px, 4vw, 52px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; margin: 6px 0 20px; font-variant-numeric: tabular-nums; }
+.sp-pricecard .price-table { background: var(--surface-2); border-radius: var(--radius-sm); margin-bottom: 18px; }
+.sp-pricecard .price-table caption { padding: 0 0 8px; }
+.sp-pricecard .price-table td { padding: 12px 18px; }
+.sp-pricecard .price-table td:last-child { padding-left: 8px; }
+.sp-pricecard .btn { width: 100%; }
+.sp-note { display: flex; gap: 9px; align-items: flex-start; font-size: 13.5px; color: var(--text-muted); margin-top: 14px; line-height: 1.55; }
+.sp-note::before { content: "✓"; color: var(--accent); font-weight: 800; flex-shrink: 0; }
 
-/* ----- кроки процесу ----- */
-.sp-steps { counter-reset: sp; display: grid; gap: 2px; margin-top: 26px; }
-.sp-step {
-  counter-increment: sp;
-  display: grid; grid-template-columns: 46px 1fr; gap: 18px; align-items: start;
-  padding: 18px 20px; background: var(--surface-2);
-  border: 1px solid var(--border);
-}
-.sp-step:first-child { border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
-.sp-step:last-child { border-radius: 0 0 var(--radius-sm) var(--radius-sm); }
-.sp-step + .sp-step { border-top: none; }
+/* ----- секції ----- */
+.sp-section { padding: 88px 0 0; }
+.sp-section h2 { font-size: clamp(28px, 3.6vw, 44px); line-height: 1.06; letter-spacing: -0.04em; margin-bottom: 14px; max-width: 22ch; text-wrap: balance; }
+.sp-section > .container > p { color: var(--text-muted); font-size: 17px; max-width: 62ch; }
+.sp-section h2 + p { margin-bottom: 26px; }
+
+/* ----- «які забруднення» — плитки ----- */
+.sp-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin-top: 26px; }
+.sp-tile { background: var(--surface); border-radius: var(--radius-sm); padding: 24px; display: flex; gap: 14px; align-items: flex-start; line-height: 1.5; }
+.sp-tile::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 7px; box-shadow: 0 0 0 5px var(--accent-soft); }
+.sp-tile b { display: block; font-size: 17px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 4px; }
+.sp-tile small { color: var(--text-muted); font-size: 14px; }
+
+/* ----- кроки — одна плитка зі списком ----- */
+.sp-steps { counter-reset: sp; background: var(--surface); border-radius: var(--radius); padding: 10px 32px; margin-top: 26px; }
+.sp-step { counter-increment: sp; display: grid; grid-template-columns: 44px 1fr; gap: 18px; align-items: start; padding: 20px 0; }
+.sp-step + .sp-step { border-top: 1px solid var(--border); }
 .sp-step::before {
-  content: counter(sp);
-  width: 34px; height: 34px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--accent-soft); color: var(--accent);
-  font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 15px;
+  content: counter(sp); width: 40px; height: 40px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--accent); color: var(--on-accent); font-weight: 800; font-size: 15px;
 }
-.sp-step b { display: block; font-size: 16px; margin-bottom: 3px; color: var(--text); }
-.sp-step p { color: var(--text-muted); font-size: 14.5px; line-height: 1.6; margin: 0; }
+.sp-step b { display: block; font-size: 17.5px; font-weight: 800; letter-spacing: -0.01em; margin: 7px 0 3px; }
+.sp-step p { color: var(--text-muted); font-size: 15px; line-height: 1.6; }
 
 /* ----- до / після ----- */
-.sp-ba {
-  max-width: 720px; margin-top: 26px;
-  background: var(--surface-2); border: 1px solid var(--border);
-  border-radius: var(--radius); overflow: hidden;
-}
-.sp-ba__view {
-  position: relative; aspect-ratio: 4 / 3;
-  overflow: hidden; cursor: ew-resize;
-  touch-action: none; user-select: none; -webkit-user-select: none;
-}
-.sp-ba__view img {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; pointer-events: none; -webkit-user-drag: none;
-}
+.sp-ba { max-width: 820px; margin-top: 26px; background: var(--surface); border-radius: var(--radius); overflow: hidden; }
+.sp-ba__view { position: relative; aspect-ratio: 4 / 3; overflow: hidden; cursor: ew-resize; touch-action: none; user-select: none; -webkit-user-select: none; }
+.sp-ba__view img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; }
 .sp-ba__after { position: absolute; inset: 0; clip-path: inset(0 50% 0 0); }
-.sp-ba__tag {
-  position: absolute; top: 14px; z-index: 4;
-  font-size: 11px; font-weight: 700; letter-spacing: .1em;
-  padding: 6px 12px; border-radius: 30px;
-  background: var(--tag-bg); border: 1px solid var(--border);
-}
-.sp-ba__tag--b { left: 14px; color: var(--text-muted); }
-.sp-ba__tag--a { right: 14px; color: var(--on-accent); background: var(--accent); border-color: transparent; }
-.sp-ba__line { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: var(--tag-text); z-index: 5; pointer-events: none; }
+/* шар «після» відкриває ліву частину фото — і підпис «після» ліворуч */
+.sp-ba__tag { position: absolute; top: 16px; z-index: 4; padding: 7px 13px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .05em; background: var(--tag-bg); color: var(--tag-text); }
+.sp-ba__tag--b { right: 16px; }
+.sp-ba__tag--a { left: 16px; background: var(--accent); color: var(--on-accent); }
+.sp-ba__line { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: #fff; z-index: 5; pointer-events: none; }
 .sp-ba__knob {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 40px; height: 40px; border-radius: 50%;
-  background: var(--tag-text); color: #0a1410;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 15px; font-weight: 700; box-shadow: 0 4px 16px var(--shadow-xl);
+  width: 48px; height: 48px; border-radius: 50%; background: #fff; color: #0f1a14;
+  display: grid; place-items: center; font-size: 15px; font-weight: 800; box-shadow: 0 6px 20px rgba(0, 0, 0, .2);
 }
-.sp-ba__cap { padding: 16px 20px; color: var(--text-muted); font-size: 14px; }
+.sp-ba__cap { padding: 18px 24px; color: var(--text-muted); font-size: 14.5px; }
 
 /* ----- FAQ ----- */
-.sp-faq { max-width: 820px; margin-top: 24px; }
-.sp-faq__item { border-bottom: 1px solid var(--border); }
+.sp-faq { background: var(--surface); border-radius: var(--radius); padding: 8px 32px; margin-top: 24px; max-width: 900px; }
+.sp-faq__item + .sp-faq__item { border-top: 1px solid var(--border); }
 .sp-faq__q {
-  width: 100%; background: none; border: 0; cursor: pointer;
-  color: var(--text); text-align: left;
-  font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 16.5px;
-  padding: 20px 44px 20px 0; position: relative; transition: color .2s;
+  width: 100%; background: none; border: 0; cursor: pointer; color: var(--text); text-align: left;
+  font-weight: 700; font-size: 17px; letter-spacing: -0.01em; padding: 22px 48px 22px 0; position: relative; transition: color .2s;
 }
 .sp-faq__q:hover { color: var(--accent); }
 .sp-faq__q::after {
-  content: "+"; position: absolute; right: 6px; top: 50%;
-  transform: translateY(-50%); font-size: 24px; font-weight: 400;
-  color: var(--accent); transition: transform .3s;
+  content: "+"; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+  width: 32px; height: 32px; border-radius: 50%; background: var(--surface-2);
+  display: grid; place-items: center; font-size: 20px; font-weight: 500; color: var(--accent); transition: transform .3s;
 }
 .sp-faq__item.open .sp-faq__q::after { transform: translateY(-50%) rotate(45deg); }
 .sp-faq__a { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
-.sp-faq__a p { color: var(--text-muted); font-size: 15px; line-height: 1.7; padding: 0 30px 22px 0; margin: 0; }
+.sp-faq__a p { color: var(--text-muted); font-size: 15.5px; line-height: 1.7; padding: 0 48px 22px 0; }
 
 /* ----- інші послуги ----- */
-.sp-related { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 26px; }
+.sp-related { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin-top: 26px; }
 .sp-related a {
-  display: flex; align-items: center; gap: 14px;
-  background: var(--surface-2); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); padding: 16px 18px;
-  text-decoration: none; transition: .22s;
+  display: flex; align-items: center; gap: 16px; background: var(--surface); border-radius: var(--radius-sm); padding: 20px 22px;
+  transition: transform .2s, box-shadow .2s;
 }
-.sp-related a:hover { border-color: var(--accent); transform: translateY(-3px); }
-.sp-related img { width: 26px; height: 26px; flex-shrink: 0; }
-.sp-related b { display: block; font-size: 15.5px; color: var(--text); font-weight: 700; }
-.sp-related small { color: var(--text-muted); font-size: 13px; }
+.sp-related a:hover { transform: translateY(-3px); box-shadow: 0 14px 30px var(--shadow); }
+.sp-related img { width: 44px; height: 44px; padding: 9px; border-radius: 12px; background: var(--accent-soft); flex-shrink: 0; }
+.sp-related b { display: block; font-size: 16.5px; font-weight: 800; letter-spacing: -0.01em; }
+.sp-related small { color: var(--text-muted); font-size: 13.5px; font-weight: 600; }
 
-/* ----- форма ----- */
-.sp-form { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; margin-top: 26px; }
-.sp-form__card {
-  background: var(--surface-2); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 28px;
-}
-.sp-form .form-group { margin-bottom: 16px; }
-.sp-form label { display: block; font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 7px; }
-.sp-form input {
-  width: 100%; background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); padding: 13px 15px; color: var(--text);
-  font-family: 'Roboto', sans-serif; font-size: 15px; transition: .2s;
-}
-.sp-form input:focus { outline: none; border-color: var(--accent); }
-.sp-form .phone-input-wrapper {
-  display: flex; align-items: center; background: var(--surface);
-  border: 1px solid var(--border); border-radius: var(--radius-sm); transition: .2s;
-}
-.sp-form .phone-input-wrapper:focus-within { border-color: var(--accent); }
-.sp-form .phone-input-wrapper .prefix { padding: 0 2px 0 15px; color: var(--text-muted); font-size: 15px; }
-.sp-form .phone-input-wrapper input { border: 0; background: none; padding-left: 6px; }
-.sp-form .btn { width: 100%; margin-top: 6px; }
+/* ----- заявка: плитка з формою + контакти ----- */
+.sp-form { display: grid; grid-template-columns: 5fr 7fr; gap: var(--gap); align-items: start; margin-top: 26px; }
+.sp-form__card { background: var(--surface); border-radius: var(--radius); padding: 34px; }
+.sp-form .form-group { margin-bottom: 14px; }
+.sp-form label { display: block; font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 7px; }
+.sp-form input { width: 100%; font-size: 17px; padding: 14px 16px; border-radius: 14px; border: 1.5px solid var(--border); background: var(--surface); color: var(--text); transition: border-color .2s, box-shadow .2s; }
+.sp-form input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.sp-form .phone-input-wrapper input { border: 0; box-shadow: none; background: transparent; padding-left: 6px; }
+.sp-form .btn { width: 100%; padding: 17px; font-size: 17px; margin-top: 4px; }
 .sp-form .hp-field { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
 .sp-form__ok { display: none; text-align: center; padding: 30px 8px; }
 .sp-form__ok.on { display: block; }
-.sp-form__ok .tick {
-  width: 58px; height: 58px; margin: 0 auto 16px; border-radius: 50%;
-  background: var(--accent-soft); color: var(--accent);
-  display: flex; align-items: center; justify-content: center; font-size: 26px;
-}
-.sp-contacts { display: grid; gap: 11px; }
-.sp-contacts a {
-  display: flex; align-items: center; gap: 14px;
-  background: var(--surface-2); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); padding: 15px 17px;
-  text-decoration: none; transition: .22s;
-}
-.sp-contacts a:hover { border-color: var(--accent); }
-.sp-contacts .ic {
-  width: 38px; height: 38px; border-radius: 11px; flex-shrink: 0;
-  background: var(--accent-soft);
-  display: flex; align-items: center; justify-content: center;
-}
-.sp-contacts .ic img { width: 19px; height: 19px; border-radius: 4px; }
-.sp-contacts b { display: block; font-size: 15.5px; color: var(--text); }
-.sp-contacts small { color: var(--text-muted); font-size: 12.5px; }
-.sp-cities {
-  margin-top: 16px; padding: 16px 18px;
-  border: 1px dashed var(--border); border-radius: var(--radius-sm);
-  color: var(--text-muted); font-size: 14px; line-height: 1.6;
-}
+.sp-form__ok .tick { width: 60px; height: 60px; margin: 0 auto 16px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; font-size: 26px; }
+
+.sp-contacts { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+.sp-contacts a { display: flex; align-items: center; gap: 14px; background: var(--surface); border-radius: var(--radius-sm); padding: 18px 20px; transition: transform .2s, box-shadow .2s; }
+.sp-contacts a:first-child { grid-column: span 2; background: var(--deep); color: var(--deep-ink); padding: 24px; }
+.sp-contacts a:first-child b { font-size: 24px; color: #fff; letter-spacing: -0.02em; }
+.sp-contacts a:first-child small { color: var(--deep-muted); }
+.sp-contacts a:first-child .ic { background: rgba(255, 255, 255, .1); }
+.sp-contacts a:hover { transform: translateY(-2px); box-shadow: 0 14px 30px var(--shadow); }
+.sp-contacts .ic { width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0; background: var(--surface-2); display: grid; place-items: center; }
+.sp-contacts .ic img { width: 22px; height: 22px; }
+.sp-contacts b { display: block; font-size: 16px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.sp-contacts small { color: var(--text-muted); font-size: 13px; font-weight: 600; }
+.sp-cities { margin-top: var(--gap); padding: 20px 22px; border-radius: var(--radius-sm); background: var(--accent-soft); color: var(--text); font-size: 14.5px; line-height: 1.6; }
+
+/* ----- блог ----- */
+.post { max-width: 860px; background: var(--surface); border-radius: var(--radius); padding: 44px; }
+.post h2 { font-size: clamp(22px, 2.6vw, 28px); margin: 36px 0 12px; max-width: none; }
+.post h2:first-child { margin-top: 0; }
+.post p { color: var(--text-muted); font-size: 16.5px; line-height: 1.8; margin: 0 0 16px; }
+.post p:last-child { margin-bottom: 0; }
+.post p strong { color: var(--text); }
+.post a { color: var(--accent); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.post a:hover { opacity: .8; }
+
+/* список статей іде одразу під шапкою блогу — без великого розриву */
+.sp-hero + .sp-section:has(> .container > .post-grid:first-child) { padding-top: var(--gap); }
+.sp-section > .container > .post-grid:first-child { margin-top: 0; }
+.post-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); margin-top: 26px; }
+.post-card { display: flex; flex-direction: column; background: var(--surface); border-radius: var(--radius); padding: 30px; transition: transform .2s, box-shadow .2s; }
+.post-card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px var(--shadow); }
+.post-card h3 { font-size: 21px; line-height: 1.25; letter-spacing: -0.02em; margin: 0 0 12px; }
+.post-card p { flex: 1; color: var(--text-muted); font-size: 15px; line-height: 1.65; margin: 0 0 18px; }
+.post-card__more { color: var(--accent); font-weight: 700; font-size: 14.5px; }
 
 /* ----- адаптив ----- */
 @media (max-width: 900px) {
-  .sp-hero__grid { grid-template-columns: 1fr; gap: 32px; }
+  .sp-hero__grid { grid-template-columns: 1fr; }
   .sp-pricecard { position: static; }
   .sp-tiles, .sp-related { grid-template-columns: repeat(2, 1fr); }
   .sp-form { grid-template-columns: 1fr; }
 }
-@media (max-width: 600px) {
-  .sp-hero { padding: 26px 0 36px; }
-  .sp-section { padding: 44px 0; }
-  .sp-tiles, .sp-related { grid-template-columns: 1fr; }
-  .sp-step { grid-template-columns: 38px 1fr; gap: 13px; padding: 16px; }
-}
-
-/* ============ БЛОГ ============ */
-.post { max-width: 820px; }
-.post h2 { font-size: 22px; margin: 34px 0 14px; }
-.post h2:first-child { margin-top: 0; }
-.post p { color: var(--text-muted); font-size: 16px; line-height: 1.8; margin: 0 0 16px; }
-.post p strong { color: var(--text); }
-.post a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
-.post a:hover { opacity: .8; }
-
-.post-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 26px; }
-.post-card {
-  display: flex; flex-direction: column;
-  background: var(--surface-2); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); padding: 24px 26px;
-  text-decoration: none; transition: .22s;
-}
-.post-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-.post-card h3 { font-size: 18px; line-height: 1.4; color: var(--text); margin: 0 0 12px; }
-.post-card p { flex: 1; color: var(--text-muted); font-size: 14.5px; line-height: 1.65; margin: 0 0 16px; }
-.post-card__more { color: var(--accent); font-weight: 700; font-size: 14.5px; }
-
 @media (max-width: 760px) {
-  .post-grid { grid-template-columns: 1fr; }
-  .post h2 { font-size: 20px; }
-  .post p { font-size: 15.5px; }
+  .sp-hero__grid > div:first-child { padding: 28px 24px; border-radius: 22px; }
+  .sp-hero > .container > h1 { padding: 28px 24px 0; border-radius: 22px 22px 0 0; }
+  .sp-hero > .container > h1 + .sp-lead { padding: 14px 24px 28px; border-radius: 0 0 22px 22px; }
+  .sp-lead { font-size: 16px; }
+  .sp-pricecard { padding: 24px; border-radius: 22px; }
+  .sp-pricecard .price-table td { padding: 11px 14px; font-size: 14.5px; }
+  .sp-section { padding-top: 60px; }
+  .sp-section > .container > p { font-size: 16px; }
+  .sp-tiles { grid-template-columns: 1fr; gap: 10px; }
+  .sp-tile { padding: 18px 20px; }
+  .sp-related { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .sp-related a { flex-direction: column; align-items: flex-start; gap: 10px; padding: 18px; }
+  .sp-steps { padding: 4px 20px; border-radius: 22px; }
+  .sp-step { grid-template-columns: 36px 1fr; gap: 14px; padding: 16px 0; }
+  .sp-step::before { width: 34px; height: 34px; font-size: 14px; }
+  .sp-step b { margin-top: 5px; font-size: 16.5px; }
+  .sp-ba { border-radius: 22px; }
+  .sp-faq { padding: 4px 22px; border-radius: 22px; }
+  .sp-faq__q { font-size: 16px; padding: 18px 44px 18px 0; }
+  .sp-faq__a p { padding-right: 8px; font-size: 15px; }
+  .sp-form__card { padding: 24px; border-radius: 22px; }
+  .sp-contacts { gap: 10px; }
+  .sp-contacts a { padding: 16px; flex-direction: column; align-items: flex-start; gap: 10px; }
+  .sp-contacts a:first-child { flex-direction: row; align-items: center; }
+  .sp-contacts a:first-child b { font-size: 21px; }
+  .post { padding: 26px 22px; border-radius: 22px; }
+  .post p { font-size: 16px; }
+  .post-grid { grid-template-columns: 1fr; gap: 10px; }
+  .post-card { padding: 24px; border-radius: 22px; }
 }

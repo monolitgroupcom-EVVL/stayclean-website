@@ -16,7 +16,7 @@
         document.documentElement.removeAttribute('data-theme');
       }
       var meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute('content', next === 'dark' ? '#0a0f0c' : '#f7faf8');
+      if (meta) meta.setAttribute('content', next === 'dark' ? '#0a0f0c' : '#ecf2ee');
       try { localStorage.setItem('sc_theme', next); } catch (e) {}
     });
   }
