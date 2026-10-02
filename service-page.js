@@ -84,18 +84,34 @@
       set(((clientX - r.left) / r.width) * 100);
     };
 
+    // На телефоні повзунок рухає тільки горизонтальний жест. Раніше будь-який дотик
+    // до фото смикав шторку до пальця й не давав гортати сторінку — вона «їздила» вбік.
+    var pending = false, startX = 0, startY = 0;
     view.addEventListener('pointerdown', function (e) {
-      dragging = true;
-      view.setPointerCapture && view.setPointerCapture(e.pointerId);
-      moveTo(e.clientX);
-      e.preventDefault();
+      if (e.pointerType === 'mouse') {
+        dragging = true;
+        view.setPointerCapture && view.setPointerCapture(e.pointerId);
+        moveTo(e.clientX);
+        e.preventDefault();
+        return;
+      }
+      pending = true; startX = e.clientX; startY = e.clientY;
     });
     view.addEventListener('pointermove', function (e) {
+      if (pending) {
+        var dx = Math.abs(e.clientX - startX), dy = Math.abs(e.clientY - startY);
+        if (dx > 6 && dx > dy) {
+          pending = false; dragging = true;
+          try { view.setPointerCapture(e.pointerId); } catch (err) {}
+        } else if (dy > 6) { pending = false; }
+      }
       if (dragging) { moveTo(e.clientX); e.preventDefault(); }
     });
-    var stop = function () { dragging = false; };
-    view.addEventListener('pointerup', stop);
-    view.addEventListener('pointercancel', stop);
+    view.addEventListener('pointerup', function (e) {
+      if (pending) moveTo(e.clientX); // короткий дотик — переставити шторку
+      pending = false; dragging = false;
+    });
+    view.addEventListener('pointercancel', function () { pending = false; dragging = false; });
     view.addEventListener('dragstart', function (e) { e.preventDefault(); });
 
     /* доступність з клавіатури */

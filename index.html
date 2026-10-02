@@ -172,7 +172,7 @@
   </script>
   <!-- ===== END MICROSOFT CLARITY ===== -->
 
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=6" />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <!-- тема: світла за замовчуванням, темна — якщо користувач обрав кнопкою -->
   <script>
@@ -1480,17 +1480,34 @@
 
         slider.addEventListener('dragstart', function(e) { e.preventDefault(); });
 
+        // На телефоні повзунок рухає тільки горизонтальний жест. Раніше будь-який дотик
+        // до фото смикав шторку до пальця й не давав гортати сторінку — вона «їздила» вбік.
+        let pending = false, startX = 0, startY = 0;
         slider.addEventListener('pointerdown', function(e) {
-          e.preventDefault();
-          dragging = true;
-          slider.setPointerCapture(e.pointerId);
-          setPosition(e.clientX);
+          if (e.pointerType === 'mouse') {
+            e.preventDefault();
+            dragging = true;
+            slider.setPointerCapture(e.pointerId);
+            setPosition(e.clientX);
+            return;
+          }
+          pending = true; startX = e.clientX; startY = e.clientY;
         });
         slider.addEventListener('pointermove', function(e) {
+          if (pending) {
+            const dx = Math.abs(e.clientX - startX), dy = Math.abs(e.clientY - startY);
+            if (dx > 6 && dx > dy) {
+              pending = false; dragging = true;
+              try { slider.setPointerCapture(e.pointerId); } catch (err) {}
+            } else if (dy > 6) { pending = false; }
+          }
           if (dragging) setPosition(e.clientX);
         });
-        slider.addEventListener('pointerup', function() { dragging = false; });
-        slider.addEventListener('pointercancel', function() { dragging = false; });
+        slider.addEventListener('pointerup', function(e) {
+          if (pending) setPosition(e.clientX); // короткий дотик — переставити шторку
+          pending = false; dragging = false;
+        });
+        slider.addEventListener('pointercancel', function() { pending = false; dragging = false; });
 
         // клавіатурна доступність
         slider.setAttribute('tabindex', '0');

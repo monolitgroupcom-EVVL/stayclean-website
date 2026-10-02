@@ -80,6 +80,8 @@ body {
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
   padding-top: 92px; /* під фіксовану шапку-капсулу */
+  /* страховка: навіть якщо щось виявиться ширшим за екран, сторінка не «їздить» убік */
+  overflow-x: clip;
 }
 h1, h2, h3, .display { font-family: inherit; letter-spacing: -0.03em; line-height: 1.1; font-weight: 800; }
 a { color: inherit; text-decoration: none; }
@@ -245,7 +247,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 /* =========================================================
    ПОСЛУГИ (картки відкривають вікно з цінами)
    ========================================================= */
-.modal-preview__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
+/* minmax(0,1fr): довгі слова («антибактериальная») не розпирають колонку за край екрана */
+.modal-preview__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+.modal-preview__card h3, .modal-preview__card p { overflow-wrap: anywhere; hyphens: auto; }
 .modal-preview__card {
   background: var(--surface); border-radius: var(--radius); padding: 28px;
   display: flex; flex-direction: column; min-height: 250px; cursor: pointer;
@@ -315,7 +319,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .ba-card { background: var(--surface); border-radius: var(--radius); overflow: hidden; }
 .ba-slider {
   position: relative; aspect-ratio: 4 / 3; overflow: hidden; cursor: ew-resize;
-  user-select: none; touch-action: none; background: var(--surface-2);
+  /* pan-y: вертикальний свайп гортає сторінку, повзунок рухає тільки горизонтальний жест */
+  user-select: none; touch-action: pan-y; background: var(--surface-2);
 }
 .ba-slider .ba-pane { position: absolute; inset: 0; }
 .ba-slider .ba-pane img {
@@ -518,7 +523,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .t-intro, .t-photo { grid-column: span 12; grid-row: auto; }
   .t-photo { min-height: 380px; }
   .t-stat { grid-column: span 6; }
-  .modal-preview__grid, .discounts__grid { grid-template-columns: repeat(2, 1fr); }
+  .modal-preview__grid, .discounts__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .why-grid { grid-template-columns: 1fr; }
   .review-card { flex: 0 0 calc((100% - 14px) / 2); }
   .areas-grid { grid-template-columns: repeat(3, 1fr); }
@@ -561,9 +566,24 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .t-cta .tel { font-size: 24px; }
   .t-form { padding: 24px; }
   .footer { margin-top: 56px; }
-  .floating-contact { right: 14px; bottom: 14px; gap: 8px; }
-  .floating-contact__btn { width: 50px; height: 50px; }
-  .floating-contact__viber, .floating-contact__telegram { width: 44px; height: 44px; margin-left: 6px; }
+  /* на телефоні кнопки зв'язку — нижня панель на всю ширину, а не кружечки поверх тексту */
+  body { padding-bottom: 84px; }
+  .floating-contact {
+    left: 12px; right: 12px; bottom: 12px; flex-direction: row; align-items: center; gap: 8px;
+    padding: 6px; border-radius: 999px; background: var(--header-bg);
+    backdrop-filter: saturate(180%) blur(18px); -webkit-backdrop-filter: saturate(180%) blur(18px);
+    box-shadow: 0 10px 30px var(--shadow-lg);
+  }
+  .floating-contact__btn { width: 48px; height: 48px; flex-shrink: 0; box-shadow: none; }
+  .floating-contact__btn:hover { transform: none; }
+  .floating-contact__phone {
+    order: 3; flex: 1; width: auto; border-radius: 999px; background: var(--accent); color: var(--on-accent);
+    display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 16px; font-weight: 800;
+  }
+  .floating-contact__phone img { width: 30px; height: 30px; }
+  .floating-contact__phone::after { content: "Подзвонити"; }
+  :lang(ru) .floating-contact__phone::after { content: "Позвонить"; }
+  :lang(en) .floating-contact__phone::after { content: "Call us"; }
 }
 @media (max-width: 420px) {
   /* на телефоні плитки по дві в ряд — інакше бенто стає довгою стрічкою */
