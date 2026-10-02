@@ -249,7 +249,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
    ========================================================= */
 /* minmax(0,1fr): довгі слова («антибактериальная») не розпирають колонку за край екрана */
 .modal-preview__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
-.modal-preview__card h3, .modal-preview__card p { overflow-wrap: anywhere; hyphens: auto; }
+.modal-preview__card h3, .modal-preview__card p { overflow-wrap: break-word; }
 .modal-preview__card {
   background: var(--surface); border-radius: var(--radius); padding: 28px;
   display: flex; flex-direction: column; min-height: 250px; cursor: pointer;
@@ -260,7 +260,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .modal-preview__card .icon-wrap img { width: 30px; height: 30px; }
 .modal-preview__card h3 { font-size: 21px; margin-top: 20px; letter-spacing: -0.02em; }
 .modal-preview__card p { font-size: 14.5px; color: var(--text-muted); margin-top: 6px; }
-.card-foot { margin-top: auto; padding-top: 20px; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.card-foot { margin-top: auto; padding-top: 20px; display: flex; align-items: baseline; justify-content: space-between; gap: 4px 10px; flex-wrap: wrap; }
 .card-price { font-size: 14px; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
 .card-price b { font-size: 26px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
 .card-price small { font-size: 13px; }
@@ -585,7 +585,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   :lang(ru) .floating-contact__phone::after { content: "Позвонить"; }
   :lang(en) .floating-contact__phone::after { content: "Call us"; }
 }
-@media (max-width: 420px) {
+@media (max-width: 480px) { /* усі телефони, включно з iPhone Pro Max (428–430 px) */
   /* на телефоні плитки по дві в ряд — інакше бенто стає довгою стрічкою */
   .bento { gap: 10px; }
   .t-stat { padding: 20px 18px; min-height: 150px; }
