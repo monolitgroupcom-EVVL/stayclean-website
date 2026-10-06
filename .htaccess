@@ -32,6 +32,8 @@ ErrorDocument 404 /404.html
   AddType image/svg+xml .svg
   AddType image/webp    .webp
   AddType text/xml      .xml
+  # llms.txt / robots.txt: без вказаної кодування кирилиця в браузері виходить «кракозябрами»
+  AddCharset UTF-8 .txt
 </IfModule>
 
 <IfModule mod_rewrite.c>
