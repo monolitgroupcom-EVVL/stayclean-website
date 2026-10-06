@@ -16,6 +16,8 @@
   font-size: clamp(34px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.045em; margin-bottom: 18px; text-wrap: balance;
 }
 .sp-hero h1 span { color: var(--accent); }
+.sp-answer { background: var(--accent-soft); border-radius: var(--radius-sm); padding: 14px 18px; margin: 0 0 18px; font-size: 15.5px; line-height: 1.6; font-weight: 600; }
+.sp-answer b { color: var(--accent); font-weight: 800; }
 .sp-lead { font-size: 17.5px; line-height: 1.7; color: var(--text-muted); max-width: 62ch; }
 .sp-hero__cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: auto; padding-top: 30px; }
 
