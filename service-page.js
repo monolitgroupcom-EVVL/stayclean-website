@@ -153,8 +153,19 @@
   }
   trackContactClick('a[href^="tel:"]', 'Phone');
   trackContactClick('a[href^="viber:"]', 'Viber');
-  trackContactClick('a[href*="t.me"]', 'Telegram');
+  trackContactClick('a[href*="t.me"]:not(.js-bot)', 'Telegram');
   trackContactClick('a[href*="instagram.com"]', 'Instagram');
+  /* ---------- запис у Telegram-бот (окремо від звичайного чату в Telegram) ---------- */
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a.js-bot') : null;
+    if (!a) return;
+    var place = a.getAttribute('data-place') || 'site';
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'contact', { event_category: 'Contact', event_label: 'TelegramBot' });
+      gtag('event', 'bot_booking_click', { event_category: 'Booking', event_label: place });
+    }
+    if (typeof fbq !== 'undefined') { fbq('track', 'Contact', { content_name: 'Telegram bot', content_category: place }); }
+  });
 
   /* ---------- форма заявки ---------- */
   var form = document.getElementById('spForm');

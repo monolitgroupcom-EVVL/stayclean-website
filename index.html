@@ -176,7 +176,7 @@
   </script>
   <!-- ===== END MICROSOFT CLARITY ===== -->
 
-  <link rel="stylesheet" href="style.css?v=7" />
+  <link rel="stylesheet" href="style.css?v=8" />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <!-- тема: світла за замовчуванням, темна — якщо користувач обрав кнопкою -->
   <script>
@@ -274,8 +274,9 @@
         </div>
         <div class="hero__cta">
           <a href="#order-form" class="btn btn-primary" data-lang-key="hero_cta_order">Залишити заявку</a>
-          <a href="#our-services" class="btn btn-ghost" data-lang-key="hero_cta_services">Переглянути послуги</a>
+          <a class="btn btn-tg js-bot" href="https://t.me/StayClean_Kiev_Bot?start=site_hero" target="_blank" rel="noopener" data-place="hero"><img src="images/icons/telegram.svg" width="22" height="22" alt="" aria-hidden="true"><span data-lang-key="hero_cta_bot">Записатися онлайн</span></a>
         </div>
+        <p class="hero__hint" data-lang-key="hero_bot_hint">Оберіть послугу та вільний час у Telegram — без дзвінків.</p>
       </div>
       <figure class="tile t-photo">
         <img src="images/hero.jpg" width="1600" height="700" alt="Хімчистка матраца — StayClean" loading="eager" fetchpriority="high">
@@ -580,7 +581,7 @@
       </div>
       <div class="tile t-flow">
         <ol class="flow">
-          <li><span class="flow__num">1</span><h3 data-lang-key="step1_t">Заявка</h3><p data-lang-key="step1_p">Залиште номер або зателефонуйте — передзвонимо й уточнимо деталі.</p></li>
+          <li><span class="flow__num">1</span><h3 data-lang-key="step1_t">Заявка</h3><p data-lang-key="step1_p">Запишіться онлайн у <a class='js-bot' href='https://t.me/StayClean_Kiev_Bot?start=site_how' target='_blank' rel='noopener' data-place='how'>Telegram-боті</a>, залиште номер або зателефонуйте — передзвонимо й уточнимо деталі.</p></li>
           <li><span class="flow__num">2</span><h3 data-lang-key="step2_t">Ціна до початку</h3><p data-lang-key="step2_p">Майстер оглядає меблі й фіксує точну вартість. Доплат «по ходу» не буває.</p></li>
           <li><span class="flow__num">3</span><h3 data-lang-key="step3_t">Чистка на місці</h3><p data-lang-key="step3_p">Екстракційна машина вимиває бруд з глибини й одразу забирає вологу.</p></li>
           <li><span class="flow__num">4</span><h3 data-lang-key="step4_t">Оплата після</h3><p data-lang-key="step4_p">Ви приймаєте результат — і тільки тоді платите.</p></li>
@@ -724,6 +725,7 @@
         <h2 data-lang-key="form_title">Вам передзвонити у зручний час?</h2>
         <p data-lang-key="cta_text">Залиште номер — уточнимо деталі й домовимося про зручний час. Ціну фіксуємо до початку роботи.</p>
         <a class="tel" href="tel:+380677088425">+38 (067) 708-84-25</a>
+        <div class="cta-bot"><a class="btn btn-tg js-bot" href="https://t.me/StayClean_Kiev_Bot?start=site_order" target="_blank" rel="noopener" data-place="order"><img src="images/icons/telegram.svg" width="22" height="22" alt="" aria-hidden="true"><span data-lang-key="hero_cta_bot">Записатися онлайн</span></a><p data-lang-key="hero_bot_hint">Оберіть послугу та вільний час у Telegram — без дзвінків.</p></div>
         <div class="msg">
           <a href="viber://chat?number=+380677088425" title="Viber" aria-label="Написати у Viber"><img src="images/icons/viber.svg" width="18" height="18" alt="" aria-hidden="true">Viber</a>
           <a href="https://t.me/+380677088425" title="Telegram" aria-label="Написати у Telegram"><img src="images/icons/telegram.svg" width="18" height="18" alt="" aria-hidden="true">Telegram</a>
@@ -791,7 +793,7 @@
     <a href="viber://chat?number=+380677088425" class="floating-contact__btn floating-contact__viber" title="Viber" aria-label="Написати у Viber">
       <img src="images/icons/viber.svg" alt="" width="24" height="24" aria-hidden="true">
     </a>
-    <a href="https://t.me/+380677088425" class="floating-contact__btn floating-contact__telegram" title="Telegram" aria-label="Написати у Telegram">
+    <a class="floating-contact__btn floating-contact__telegram floating-contact__bot js-bot" href="https://t.me/StayClean_Kiev_Bot?start=site_panel" target="_blank" rel="noopener" data-place="panel" title="Записатися онлайн" aria-label="Записатися онлайн у Telegram-боті">
       <img src="images/icons/telegram.svg" alt="" width="24" height="24" aria-hidden="true">
     </a>
     <a href="tel:+380677088425" class="floating-contact__btn floating-contact__phone" title="Подзвонити" aria-label="Подзвонити">
@@ -911,13 +913,14 @@
         from: "від",
         services_sub: "Натисніть на послугу, щоб побачити всі ціни. Точну вартість майстер називає після огляду — до початку роботи.",
         how_title: "Як це працює", how_sub: "Чотири кроки — від дзвінка до чистих меблів.",
-        step1_t: "Заявка", step1_p: "Залиште номер або зателефонуйте — передзвонимо й уточнимо деталі.",
+        step1_t: "Заявка", step1_p: "Запишіться онлайн у <a class='js-bot' href='https://t.me/StayClean_Kiev_Bot?start=site_how' target='_blank' rel='noopener' data-place='how'>Telegram-боті</a>, залиште номер або зателефонуйте — передзвонимо й уточнимо деталі.",
         step2_t: "Ціна до початку", step2_p: "Майстер оглядає меблі й фіксує точну вартість. Доплат «по ходу» не буває.",
         step3_t: "Чистка на місці", step3_p: "Екстракційна машина вимиває бруд з глибини й одразу забирає вологу.",
         step4_t: "Оплата після", step4_p: "Ви приймаєте результат — і тільки тоді платите.",
         reviews_google: "<span>★★★★★</span> 5.0 у Google",
         cta_text: "Залиште номер — уточнимо деталі й домовимося про зручний час. Ціну фіксуємо до початку роботи.",
         form_card_title: "Заявка на хімчистку",
+        hero_cta_bot: "Записатися онлайн", hero_bot_hint: "Оберіть послугу та вільний час у Telegram — без дзвінків.",
       },
       ru: {
         nav_services: "Наши услуги", nav_works: "Иллюстрация", nav_about: "О нас", nav_reviews: "Отзывы", nav_contacts: "Контакты", nav_order: "Оставить заявку",
@@ -1027,13 +1030,14 @@
         from: "от",
         services_sub: "Нажмите на услугу, чтобы увидеть все цены. Точную стоимость мастер называет после осмотра — до начала работы.",
         how_title: "Как это работает", how_sub: "Четыре шага — от звонка до чистой мебели.",
-        step1_t: "Заявка", step1_p: "Оставьте номер или позвоните — перезвоним и уточним детали.",
+        step1_t: "Заявка", step1_p: "Запишитесь онлайн в <a class='js-bot' href='https://t.me/StayClean_Kiev_Bot?start=site_how' target='_blank' rel='noopener' data-place='how'>Telegram-боте</a>, оставьте номер или позвоните — перезвоним и уточним детали.",
         step2_t: "Цена до начала", step2_p: "Мастер осматривает мебель и фиксирует точную стоимость. Доплат «по ходу» не бывает.",
         step3_t: "Чистка на месте", step3_p: "Экстракционная машина вымывает грязь из глубины и сразу забирает влагу.",
         step4_t: "Оплата после", step4_p: "Вы принимаете результат — и только тогда платите.",
         reviews_google: "<span>★★★★★</span> 5.0 в Google",
         cta_text: "Оставьте номер — уточним детали и договоримся об удобном времени. Цену фиксируем до начала работы.",
         form_card_title: "Заявка на химчистку",
+        hero_cta_bot: "Записаться онлайн", hero_bot_hint: "Выберите услугу и свободное время в Telegram — без звонков.",
       },
       en: {
         nav_services: "Our Services", nav_works: "Illustration", nav_about: "About Us", nav_reviews: "Reviews", nav_contacts: "Contacts", nav_order: "Leave a request",
@@ -1143,13 +1147,14 @@
         from: "from",
         services_sub: "Tap a service to see all prices. The exact price is confirmed after inspection — before the work starts.",
         how_title: "How it works", how_sub: "Four steps — from the call to clean furniture.",
-        step1_t: "Request", step1_p: "Leave your number or call us — we'll call back and clarify the details.",
+        step1_t: "Request", step1_p: "Book online in our <a class='js-bot' href='https://t.me/StayClean_Kiev_Bot?start=site_how' target='_blank' rel='noopener' data-place='how'>Telegram bot</a>, leave your number or call us — we'll call back and clarify the details.",
         step2_t: "Price up front", step2_p: "The technician inspects the furniture and fixes the exact price. No surprise charges.",
         step3_t: "Cleaning on site", step3_p: "The extraction machine washes dirt out from deep inside and removes the moisture.",
         step4_t: "Pay after", step4_p: "You accept the result — and only then pay.",
         reviews_google: "<span>★★★★★</span> 5.0 on Google",
         cta_text: "Leave your number — we'll clarify the details and agree on a convenient time. The price is fixed before we start.",
         form_card_title: "Cleaning request",
+        hero_cta_bot: "Book online", hero_bot_hint: "Pick a service and a free time slot in Telegram — no calls needed.",
       }
     };
 
@@ -1405,6 +1410,23 @@
       setupContactTracking('a[title="Viber"]', 'Viber');
       setupContactTracking('a[title="Telegram"]', 'Telegram');
       setupContactTracking('a[title="Instagram"]', 'Instagram');
+      // ===== ЗАПИС У TELEGRAM-БОТ =====
+      // Делегування на document: кнопки всередині перекладених текстів (крок «Заявка»)
+      // перемальовуються при зміні мови, тож слухач на самих кнопках загубився б.
+      // BOT_CONVERSION_ID — мітка окремої конверсії «Запис у Telegram-бот» з Google Ads; поки порожня,
+      // клік рахується подією contact/TelegramBot і окремою подією bot_booking_click з місцем кнопки.
+      var BOT_CONVERSION_ID = '';
+      document.addEventListener('click', function (e) {
+        var a = e.target && e.target.closest ? e.target.closest('a.js-bot') : null;
+        if (!a) return;
+        var place = a.getAttribute('data-place') || 'site';
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'contact', { 'event_category': 'Contact', 'event_label': 'TelegramBot' });
+          gtag('event', 'bot_booking_click', { 'event_category': 'Booking', 'event_label': place });
+          if (BOT_CONVERSION_ID) { gtag('event', 'conversion', { 'send_to': BOT_CONVERSION_ID }); }
+        }
+        if (typeof fbq !== 'undefined') { fbq('track', 'Contact', { content_name: 'Telegram bot', content_category: place }); }
+      });
 
       // ===== МОДАЛКИ ПОСЛУГ (клік + клавіатура) =====
       const modals = {

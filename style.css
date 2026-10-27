@@ -199,6 +199,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .btn-ghost { background: var(--surface-2); color: var(--text); }
 .btn-ghost:hover { background: var(--border); }
 .nav a.btn-primary, .nav a.btn-primary:hover { color: var(--on-accent); }
+/* кнопка запису в Telegram-бот: фірмовий синій Telegram, щоб відрізнялась від зеленої «Залишити заявку» */
+.btn-tg { background: #229ED9; color: #fff; }
+.btn-tg:hover { background: #1b8bc2; box-shadow: 0 10px 24px rgba(34, 158, 217, 0.3); }
+.btn-tg img { width: 22px; height: 22px; display: block; flex-shrink: 0; }
+.hero__hint { font-size: 14px; color: var(--text-muted); margin-top: 12px; }
+.cta-bot { margin-top: 22px; }
+.cta-bot .btn { width: 100%; max-width: 360px; }
+.cta-bot p { font-size: 14px; color: var(--deep-muted); margin-top: 8px; }
+.flow p a { color: var(--accent); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 
 /* =========================================================
    ПЛИТКИ (бенто) — спільна основа
@@ -584,6 +593,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .floating-contact__phone::after { content: "Подзвонити"; }
   :lang(ru) .floating-contact__phone::after { content: "Позвонить"; }
   :lang(en) .floating-contact__phone::after { content: "Call us"; }
+  /* запис у бот — друга «пігулка» поруч із «Подзвонити» */
+  .floating-contact__bot {
+    order: 2; flex: 1; width: auto; border-radius: 999px; background: #229ED9; color: #fff;
+    display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; padding: 0 8px; font-weight: 800; white-space: nowrap;
+  }
+  .floating-contact__bot img { width: 26px; height: 26px; }
+  .floating-contact__bot::after { content: "Запис онлайн"; }
+  :lang(ru) .floating-contact__bot::after { content: "Запись онлайн"; }
+  :lang(en) .floating-contact__bot::after { content: "Book online"; }
+  .floating-contact__phone { white-space: nowrap; }
 }
 @media (max-width: 480px) { /* усі телефони, включно з iPhone Pro Max (428–430 px) */
   /* на телефоні плитки по дві в ряд — інакше бенто стає довгою стрічкою */
@@ -602,4 +621,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .card-link { font-size: 13px; }
   .discounts__grid { grid-template-columns: 1fr; }
   .logo__word { font-size: 18px; }
+}
+
+/* дуже вузькі телефони: Viber ховаємо з панелі (він є в меню і контактах), щоб дві кнопки вмістилися */
+@media (max-width: 374px) {
+  .floating-contact__viber { display: none !important; }
+  .floating-contact__bot, .floating-contact__phone { font-size: 14px; gap: 6px; }
+  .floating-contact__bot img, .floating-contact__phone img { width: 24px; height: 24px; }
 }
