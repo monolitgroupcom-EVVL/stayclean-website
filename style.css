@@ -587,9 +587,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .floating-contact__btn:hover { transform: none; }
   .floating-contact__phone {
     order: 3; flex: 1; width: auto; border-radius: 999px; background: var(--accent); color: var(--on-accent);
-    display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 16px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 800; padding: 0 8px;
   }
-  .floating-contact__phone img { width: 30px; height: 30px; }
+  .floating-contact__phone img { width: 26px; height: 26px; }
   .floating-contact__phone::after { content: "Подзвонити"; }
   :lang(ru) .floating-contact__phone::after { content: "Позвонить"; }
   :lang(en) .floating-contact__phone::after { content: "Call us"; }
@@ -628,4 +628,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .floating-contact__viber { display: none !important; }
   .floating-contact__bot, .floating-contact__phone { font-size: 14px; gap: 6px; }
   .floating-contact__bot img, .floating-contact__phone img { width: 24px; height: 24px; }
+}
+
+/* умови замовлення під картками послуг */
+.tile.order-terms { margin-top: var(--gap); display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px 28px; padding: 26px 30px; background: var(--accent-soft); }
+.order-terms b { display: block; font-size: 17px; font-weight: 800; letter-spacing: -0.01em; }
+.order-terms p { font-size: 14.5px; color: var(--text-muted); margin-top: 4px; }
+/* бонуси: умови + кнопка бота */
+.tile.loyalty-foot { margin-top: var(--gap); display: flex; align-items: center; justify-content: space-between; gap: 18px 28px; flex-wrap: wrap; padding: 26px 30px; }
+.loyalty-foot p { flex: 1 1 420px; font-size: 14.5px; line-height: 1.65; color: var(--text-muted); }
+@media (max-width: 760px) {
+  .tile.order-terms { grid-template-columns: 1fr; padding: 22px 24px; gap: 14px; }
+  .tile.loyalty-foot { padding: 22px 24px; }
+  .loyalty-foot p { flex-basis: 100%; }
+  .loyalty-foot .btn { width: 100%; }
+}
+
+/* звичайні телефони (до 430 px): дві «пігулки» і Viber мають вміститися разом */
+@media (max-width: 430px) {
+  .floating-contact { gap: 6px; }
+  .floating-contact__viber { width: 40px; height: 40px; }
+  .floating-contact__bot, .floating-contact__phone { font-size: 13.5px; gap: 5px; padding: 0 6px; }
+  .floating-contact__bot img, .floating-contact__phone img { width: 22px; height: 22px; }
 }

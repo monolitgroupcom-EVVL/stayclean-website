@@ -51,9 +51,9 @@
       "name": "Ціни на хімчистку матраців",
       "itemListElement": [
         { "@type": "Offer", "priceCurrency": "UAH", "price": "1200", "itemOffered": { "@type": "Service", "name": "Чистка дитячого матраца" } },
-        { "@type": "Offer", "priceCurrency": "UAH", "price": "1600", "itemOffered": { "@type": "Service", "name": "Чистка двоспального матраца 140×200" } },
-        { "@type": "Offer", "priceCurrency": "UAH", "price": "1800", "itemOffered": { "@type": "Service", "name": "Чистка двоспального матраца 180×200" } },
-        { "@type": "Offer", "priceCurrency": "UAH", "price": "2000", "itemOffered": { "@type": "Service", "name": "Чистка двоспального матраца 200×200" } },
+        { "@type": "Offer", "priceCurrency": "UAH", "price": "1600", "itemOffered": { "@type": "Service", "name": "Чистка двоспального матраца 140×200 (2 сторони)" } },
+        { "@type": "Offer", "priceCurrency": "UAH", "price": "1800", "itemOffered": { "@type": "Service", "name": "Чистка двоспального матраца 180×200 (2 сторони)" } },
+        { "@type": "Offer", "priceCurrency": "UAH", "price": "2000", "itemOffered": { "@type": "Service", "name": "Чистка двоспального матраца 200×200 (2 сторони)" } },
         { "@type": "Offer", "priceCurrency": "UAH", "price": "700", "itemOffered": { "@type": "Service", "name": "Чистка підголів'я ліжка" } },
         { "@type": "Offer", "priceCurrency": "UAH", "price": "700", "itemOffered": { "@type": "Service", "name": "Чистка периметра ліжка" } }
       ]
@@ -76,6 +76,11 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Ціна вказана за одну сторону матраца чи за дві?",
+        "acceptedAnswer": { "@type": "Answer", "text": "За дві. Ціни на двоспальні матраци (140×200, 180×200, 200×200) — це чистка обох сторін матраца." }
+      },
       {
         "@type": "Question",
         "name": "Скільки сохне матрац і чи можна на ньому спати в ту ж ніч?",
@@ -150,7 +155,7 @@
     })(window, document, "clarity", "script", "yajnhabjn2");
   </script>
 
-  <link rel="stylesheet" href="../style.css?v=8" />
+  <link rel="stylesheet" href="../style.css?v=9" />
   <link rel="stylesheet" href="../service-page.css?v=7" />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <!-- тема: світла за замовчуванням, темна — якщо користувач обрав кнопкою -->
@@ -220,7 +225,7 @@
         <div>
           <div class="icon-wrap"><img src="../images/icons/mattress.svg" width="24" height="24" alt="" aria-hidden="true"></div>
           <h1>Хімчистка <span>матраців</span> на дому в Києві</h1>
-          <p class="sp-answer"><b>Коротко:</b> дитячий матрац — 1200 грн, двоспальний 140×200 — 1600 грн, 180×200 — 1800 грн, 200×200 — 2000 грн; підголів'я або периметр ліжка — 700 грн. Антибактеріальна обробка входить у вартість, оплата після роботи.</p>
+          <p class="sp-answer"><b>Коротко:</b> дитячий матрац — 1200 грн, двоспальний 140×200 — 1600 грн, 180×200 — 1800 грн, 200×200 — 2000 грн (ціни за 2 сторони); підголів'я або периметр ліжка — 700 грн. Антибактеріальна обробка входить у вартість, оплата після роботи.</p>
           <p class="sp-lead">
             Глибоке очищення матраців від плям, пилових кліщів та неприємних запахів.
             Антибактеріальна обробка входить у вартість. Підходить для дитячих, ортопедичних
@@ -240,15 +245,16 @@
             <caption>Ціни</caption>
             <tbody>
               <tr><td>Дитячий матрац</td><td>1200 <span class="price-note">грн</span></td></tr>
-              <tr><td>Двоспальний 140×200</td><td>1600 <span class="price-note">грн</span></td></tr>
-              <tr><td>Двоспальний 180×200</td><td>1800 <span class="price-note">грн</span></td></tr>
-              <tr><td>Двоспальний 200×200</td><td>2000 <span class="price-note">грн</span></td></tr>
+              <tr><td>Двоспальний 140×200 (2 сторони)</td><td>1600 <span class="price-note">грн</span></td></tr>
+              <tr><td>Двоспальний 180×200 (2 сторони)</td><td>1800 <span class="price-note">грн</span></td></tr>
+              <tr><td>Двоспальний 200×200 (2 сторони)</td><td>2000 <span class="price-note">грн</span></td></tr>
               <tr><td>Підголів'я ліжка</td><td>700 <span class="price-note">грн</span></td></tr>
               <tr><td>Периметр ліжка</td><td>700 <span class="price-note">грн</span></td></tr>
             </tbody>
           </table>
           <a href="#order" class="btn btn-primary">Розрахувати вартість</a>
           <a class="btn btn-tg js-bot" href="https://t.me/StayClean_Kiev_Bot?start=site_service" target="_blank" rel="noopener" data-place="service"><img src="../images/icons/telegram.svg" width="22" height="22" alt="" aria-hidden="true"><span>Записатися онлайн</span></a>
+          <p class="sp-note">Мінімальне замовлення — 1500 грн (без виїзду). Виїзд по Києву — від 200 грн, за місто — індивідуально телефоном.</p>
           <p class="sp-note">Антибактеріальна обробка вже входить у вартість</p>
         </aside>
       </div>
@@ -303,6 +309,7 @@
     <div class="container">
       <h2>Часті питання про чистку матраців</h2>
       <div class="sp-faq">
+        <div class="sp-faq__item"><button class="sp-faq__q" type="button">Ціна вказана за одну сторону матраца чи за дві?</button><div class="sp-faq__a"><p>За дві. Ціни на двоспальні матраци (140×200, 180×200, 200×200) — це чистка обох сторін матраца.</p></div></div>
         <div class="sp-faq__item"><button class="sp-faq__q" type="button">Скільки сохне матрац і чи можна на ньому спати в ту ж ніч?</button><div class="sp-faq__a"><p>Зазвичай 6–8 годин. Тому чистку найкраще замовляти на першу половину дня — до вечора матрац буде сухим. Екстракційна машина забирає більшу частину вологи одразу, матрац не залишається мокрим.</p></div></div>
         <div class="sp-faq__item"><button class="sp-faq__q" type="button">Як часто треба чистити матрац?</button><div class="sp-faq__a"><p>Зазвичай раз на рік-півтора. Якщо в домі є алергік, маленька дитина або тварина — краще частіше.</p></div></div>
         <div class="sp-faq__item"><button class="sp-faq__q" type="button">Чи виводиться запах сечі?</button><div class="sp-faq__a"><p>Так, для цього й потрібна антибактеріальна обробка: вона працює з джерелом запаху в глибині наповнювача. Побутові засоби зазвичай прибирають запах лише з поверхні, і за кілька днів він повертається.</p></div></div>
@@ -364,7 +371,7 @@
 
         <div>
           <div class="sp-contacts">
-            <a href="tel:+380677088425"><span class="ic"><img src="../images/icons/phone.svg" width="24" height="24" alt="" aria-hidden="true"></span><span><b>+38 (067) 708-84-25</b><small>Дзвінок або SMS</small></span></a><a class="sp-bot js-bot" href="https://t.me/StayClean_Kiev_Bot?start=site_contacts" target="_blank" rel="noopener" data-place="contacts"><span class="ic"><img src="../images/icons/telegram.svg" width="24" height="24" alt="" aria-hidden="true"></span><span><b>Записатися онлайн</b><small>Оберіть послугу та вільний час у Telegram</small></span></a>
+            <a href="tel:+380677088425"><span class="ic"><img src="../images/icons/phone.svg" width="24" height="24" alt="" aria-hidden="true"></span><span><b>+38 (067) 708-84-25</b><small>Дзвінок або SMS</small></span></a><a class="sp-bot js-bot" href="https://t.me/StayClean_Kiev_Bot?start=site_contacts" target="_blank" rel="noopener" data-place="contacts"><span class="ic"><img src="../images/icons/telegram.svg" width="24" height="24" alt="" aria-hidden="true"></span><span><b>Записатися онлайн</b><small>Оберіть послугу та час у Telegram · 5% бонусами після оплати</small></span></a>
             <a href="viber://chat?number=+380677088425"><span class="ic"><img src="../images/icons/viber.svg" width="24" height="24" alt="" aria-hidden="true"></span><span><b>Viber</b><small>Надішліть фото — оцінимо одразу</small></span></a>
             <a href="https://t.me/+380677088425"><span class="ic"><img src="../images/icons/telegram.svg" width="24" height="24" alt="" aria-hidden="true"></span><span><b>Telegram</b><small>Відповідаємо швидко</small></span></a>
             <a href="https://www.instagram.com/stay.clean.ua" target="_blank" rel="noopener noreferrer"><span class="ic"><img src="../images/icons/instagram.svg" width="24" height="24" alt="" aria-hidden="true"></span><span><b>Instagram</b><small>Наші роботи</small></span></a><a href="https://www.facebook.com/profile.php?id=61576985369479" target="_blank" rel="noopener noreferrer"><span class="ic"><img src="../images/icons/facebook.svg" width="24" height="24" alt="" aria-hidden="true"></span><span><b>Facebook</b><small>Наша сторінка</small></span></a>

@@ -124,6 +124,21 @@
         "@type": "Question",
         "name": "У які міста ви виїжджаєте?",
         "acceptedAnswer": { "@type": "Answer", "text": "Київ, Бровари, Ірпінь, Бориспіль, Буча, Вишневе, Обухів та найближчі населені пункти області." }
+      },
+      {
+        "@type": "Question",
+        "name": "Яке мінімальне замовлення?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Мінімальне замовлення — 1500 грн за послуги (без виїзду). Дрібні речі, наприклад подушки чи стільці, можна додати до більшого замовлення." }
+      },
+      {
+        "@type": "Question",
+        "name": "Скільки коштує виїзд?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Виїзд по Києву — від 200 грн, точну суму адміністратор підтвердить за адресою. Вартість виїзду за місто обговорюється індивідуально телефоном." }
+      },
+      {
+        "@type": "Question",
+        "name": "Чи є бонуси для клієнтів?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Так, у нашому Telegram-боті: 5% бонусами після виконаного й оплаченого замовлення. Якщо запросите друга, він отримає знижку 150 грн на перше замовлення від 1500 грн, а ви — 150 бонусів після його оплати." }
       }
     ]
   }
@@ -173,7 +188,7 @@
   </script>
   <!-- ===== END MICROSOFT CLARITY ===== -->
 
-  <link rel="stylesheet" href="style.css?v=8" />
+  <link rel="stylesheet" href="style.css?v=9" />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <!-- тема: світла за замовчуванням, темна — якщо користувач обрав кнопкою -->
   <script>
@@ -357,6 +372,12 @@
         </div>
       </div>
 
+      <div class="tile order-terms">
+        <div><b data-lang-key="terms_min_t">Мінімальне замовлення — 1500 грн</b><p data-lang-key="terms_min_p">Сума послуг без урахування виїзду. Дрібні речі зручно додати до більшого замовлення.</p></div>
+        <div><b data-lang-key="terms_kyiv_t">Виїзд по Києву — від 200 грн</b><p data-lang-key="terms_kyiv_p">Точну суму адміністратор підтвердить за адресою.</p></div>
+        <div><b data-lang-key="terms_reg_t">Виїзд за місто</b><p data-lang-key="terms_reg_p">Вартість обговорюється індивідуально телефоном.</p></div>
+      </div>
+
       <div class="tile about-text">
         <p data-lang-key="services_text1">
           Потрібна професійна хімчистка меблів на дому в Києві за вигідною вартістю? Компанія «StayClean» («Стей Клін») пропонує виїзд хімчистки у Києві, Броварах, Ірпені та найближчих населених пунктах для фізичних та юридичних осіб. Понад 12 років ми зарекомендували себе як надійний партнер у столиці та області.
@@ -447,9 +468,9 @@
         <table class="price-table">
           <tbody>
             <tr><td data-lang-key="price_mattress_kids">Чистка матраца дитячого</td><td>1200 <span class="price-note">грн</span></td></tr>
-            <tr><td data-lang-key="price_mattress_140">Чистка матраца двоспального (140×200)</td><td>1600 <span class="price-note">грн</span></td></tr>
-            <tr><td data-lang-key="price_mattress_180">Чистка матраца двоспального (180×200)</td><td>1800 <span class="price-note">грн</span></td></tr>
-            <tr><td data-lang-key="price_mattress_200">Чистка матраца двоспального (200×200)</td><td>2000 <span class="price-note">грн</span></td></tr>
+            <tr><td data-lang-key="price_mattress_140">Чистка матраца двоспального 140×200 (2 сторони)</td><td>1600 <span class="price-note">грн</span></td></tr>
+            <tr><td data-lang-key="price_mattress_180">Чистка матраца двоспального 180×200 (2 сторони)</td><td>1800 <span class="price-note">грн</span></td></tr>
+            <tr><td data-lang-key="price_mattress_200">Чистка матраца двоспального 200×200 (2 сторони)</td><td>2000 <span class="price-note">грн</span></td></tr>
             <tr><td data-lang-key="price_headboard">Чистка підголів'я ліжка</td><td>700 <span class="price-note">грн</span></td></tr>
             <tr><td data-lang-key="price_bed_perimeter">Чистка периметра ліжка</td><td>700 <span class="price-note">грн</span></td></tr>
           </tbody>
@@ -587,6 +608,25 @@
     </div>
   </section>
 
+  <!-- ====== БОНУСИ (тільки в Telegram-боті) ====== -->
+  <section class="sec" id="bonus">
+    <div class="container">
+      <div class="sec__head">
+        <h2 data-lang-key="loyalty_title">Бонуси за запис через Telegram-бот</h2>
+        <p data-lang-key="loyalty_sub">Програма лояльності працює тільки в нашому боті: записуйтесь через нього, щоб отримувати бонуси.</p>
+      </div>
+      <div class="why-grid">
+        <div class="tile tile--deep"><p data-lang-key="loyalty_1"><strong>5% бонусами</strong> Після виконаного й повністю оплаченого замовлення нараховуємо 5% від вартості послуг, оплачених грошима. 1 бонус = 1 грн.</p></div>
+        <div class="tile"><p data-lang-key="loyalty_2"><strong>150 грн знижки другу</strong> Запросіть друга за особистим посиланням у боті: він отримає знижку 150 грн на перше замовлення від 1500 грн.</p></div>
+        <div class="tile"><p data-lang-key="loyalty_3"><strong>150 бонусів вам</strong> Коли замовлення друга буде виконане й оплачене, ми нарахуємо вам 150 бонусів.</p></div>
+      </div>
+      <div class="tile loyalty-foot">
+        <p data-lang-key="loyalty_terms">Бонусами можна оплатити до 20% вартості послуг у наступному замовленні, але після списання сума послуг має бути не нижчою за 1500 грн. Виїзд оплачується грошима. Бонуси діють 12 місяців, бонуси, знижка другу й акції не поєднуються в одному замовленні. Слідкуйте за нашими оновленнями!</p>
+        <a class="btn btn-tg js-bot" href="https://t.me/StayClean_Kiev_Bot?start=site_bonus" target="_blank" rel="noopener" data-place="bonus"><img src="images/icons/telegram.svg" width="22" height="22" alt="" aria-hidden="true"><span data-lang-key="loyalty_cta">Отримувати бонуси в боті</span></a>
+      </div>
+    </div>
+  </section>
+
   <!-- ====== ПРО НАС ====== -->
   <section class="sec" id="about-us">
     <div class="container">
@@ -710,6 +750,18 @@
         <div class="faq__item">
           <button class="faq__q" type="button" data-lang-key="faq_q6">У які міста ви виїжджаєте?</button>
           <div class="faq__a"><p data-lang-key="faq_a6">Київ, Бровари, Ірпінь, Бориспіль, Буча, Вишневе, Обухів та найближчі населені пункти області.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" type="button" data-lang-key="faq_q7">Яке мінімальне замовлення?</button>
+          <div class="faq__a"><p data-lang-key="faq_a7">Мінімальне замовлення — 1500 грн за послуги (без виїзду). Дрібні речі, наприклад подушки чи стільці, можна додати до більшого замовлення.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" type="button" data-lang-key="faq_q8">Скільки коштує виїзд?</button>
+          <div class="faq__a"><p data-lang-key="faq_a8">Виїзд по Києву — від 200 грн, точну суму адміністратор підтвердить за адресою. Вартість виїзду за місто обговорюється індивідуально телефоном.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" type="button" data-lang-key="faq_q9">Чи є бонуси для клієнтів?</button>
+          <div class="faq__a"><p data-lang-key="faq_a9">Так, у нашому Telegram-боті: 5% бонусами після виконаного й оплаченого замовлення. Якщо запросите друга, він отримає знижку 150 грн на перше замовлення від 1500 грн, а ви — 150 бонусів після його оплати.</p></div>
         </div>
       </div>
     </div>
@@ -870,6 +922,25 @@
         faq_a5: "Так. Ми працюємо засобами, безпечними для дітей і домашніх тварин, і підбираємо склад індивідуально під тип тканини ваших меблів.",
         faq_q6: "У які міста ви виїжджаєте?",
         faq_a6: "Київ, Бровари, Ірпінь, Бориспіль, Буча, Вишневе, Обухів та найближчі населені пункти області.",
+        terms_min_t: "Мінімальне замовлення — 1500 грн",
+        terms_min_p: "Сума послуг без урахування виїзду. Дрібні речі зручно додати до більшого замовлення.",
+        terms_kyiv_t: "Виїзд по Києву — від 200 грн",
+        terms_kyiv_p: "Точну суму адміністратор підтвердить за адресою.",
+        terms_reg_t: "Виїзд за місто",
+        terms_reg_p: "Вартість обговорюється індивідуально телефоном.",
+        loyalty_title: "Бонуси за запис через Telegram-бот",
+        loyalty_sub: "Програма лояльності працює тільки в нашому боті: записуйтесь через нього, щоб отримувати бонуси.",
+        loyalty_1: "<strong>5% бонусами</strong> Після виконаного й повністю оплаченого замовлення нараховуємо 5% від вартості послуг, оплачених грошима. 1 бонус = 1 грн.",
+        loyalty_2: "<strong>150 грн знижки другу</strong> Запросіть друга за особистим посиланням у боті: він отримає знижку 150 грн на перше замовлення від 1500 грн.",
+        loyalty_3: "<strong>150 бонусів вам</strong> Коли замовлення друга буде виконане й оплачене, ми нарахуємо вам 150 бонусів.",
+        loyalty_terms: "Бонусами можна оплатити до 20% вартості послуг у наступному замовленні, але після списання сума послуг має бути не нижчою за 1500 грн. Виїзд оплачується грошима. Бонуси діють 12 місяців, бонуси, знижка другу й акції не поєднуються в одному замовленні. Слідкуйте за нашими оновленнями!",
+        loyalty_cta: "Отримувати бонуси в боті",
+        faq_q7: "Яке мінімальне замовлення?",
+        faq_a7: "Мінімальне замовлення — 1500 грн за послуги (без виїзду). Дрібні речі, наприклад подушки чи стільці, можна додати до більшого замовлення.",
+        faq_q8: "Скільки коштує виїзд?",
+        faq_a8: "Виїзд по Києву — від 200 грн, точну суму адміністратор підтвердить за адресою. Вартість виїзду за місто обговорюється індивідуально телефоном.",
+        faq_q9: "Чи є бонуси для клієнтів?",
+        faq_a9: "Так, у нашому Telegram-боті: 5% бонусами після виконаного й оплаченого замовлення. Якщо запросите друга, він отримає знижку 150 грн на перше замовлення від 1500 грн, а ви — 150 бонусів після його оплати.",
         contacts_title: "Контакти", contacts_city: "Київ",
         service_area_list: "Виїжджаємо також у Бровари, Ірпінь, Бориспіль, Бучу, Вишневе та Обухів",
         form_title: "Вам передзвонити у зручний час?", form_name: "Ваше ім'я", form_phone: "Телефон", form_email: "Пошта",
@@ -894,8 +965,8 @@
         price_group_chairs: "Крісла та пуфи", price_armchair_soft: "М'яке крісло", price_armchair_office: "Офісне крісло", price_beanbag: "Крісло-мішок", price_pouf: "Пуф",
         price_group_stools: "Стільці", price_chair_back: "Стілець зі спинкою", price_chair_noback: "Стілець без спинки",
         price_group_mattresses: "Матраци та спальні приналежності",
-        price_mattress_kids: "Чистка матраца дитячого", price_mattress_140: "Чистка матраца двоспального (140×200)",
-        price_mattress_180: "Чистка матраца двоспального (180×200)", price_mattress_200: "Чистка матраца двоспального (200×200)",
+        price_mattress_kids: "Чистка матраца дитячого", price_mattress_140: "Чистка матраца двоспального 140×200 (2 сторони)",
+        price_mattress_180: "Чистка матраца двоспального 180×200 (2 сторони)", price_mattress_200: "Чистка матраца двоспального 200×200 (2 сторони)",
         price_headboard: "Чистка підголів'я ліжка", price_bed_perimeter: "Чистка периметра ліжка",
         price_group_pillows: "Подушки декоративні / диванні", price_pillow_small: "Маленька", price_pillow_medium: "Середня", price_pillow_large: "Велика",
         price_group_carpets: "Килимові покриття та штори (ціна за м²)", price_carpet_loop: "Хімчистка ковроліну",
@@ -988,6 +1059,25 @@
         faq_a5: "Да. Мы работаем средствами, безопасными для детей и домашних животных, и подбираем состав индивидуально под тип ткани вашей мебели.",
         faq_q6: "В какие города вы выезжаете?",
         faq_a6: "Киев, Бровары, Ирпень, Борисполь, Буча, Вишнёвое, Обухов и ближайшие населённые пункты области.",
+        terms_min_t: "Минимальный заказ — 1500 грн",
+        terms_min_p: "Сумма услуг без учёта выезда. Мелкие вещи удобно добавить к большему заказу.",
+        terms_kyiv_t: "Выезд по Киеву — от 200 грн",
+        terms_kyiv_p: "Точную сумму администратор подтвердит по адресу.",
+        terms_reg_t: "Выезд за город",
+        terms_reg_p: "Стоимость обсуждается индивидуально по телефону.",
+        loyalty_title: "Бонусы за запись через Telegram-бот",
+        loyalty_sub: "Программа лояльности работает только в нашем боте: записывайтесь через него, чтобы получать бонусы.",
+        loyalty_1: "<strong>5% бонусами</strong> После выполненного и полностью оплаченного заказа начисляем 5% от стоимости услуг, оплаченных деньгами. 1 бонус = 1 грн.",
+        loyalty_2: "<strong>150 грн скидки другу</strong> Пригласите друга по личной ссылке в боте: он получит скидку 150 грн на первый заказ от 1500 грн.",
+        loyalty_3: "<strong>150 бонусов вам</strong> Когда заказ друга будет выполнен и оплачен, мы начислим вам 150 бонусов.",
+        loyalty_terms: "Бонусами можно оплатить до 20% стоимости услуг в следующем заказе, но после списания сумма услуг должна быть не ниже 1500 грн. Выезд оплачивается деньгами. Бонусы действуют 12 месяцев, бонусы, скидка другу и акции не суммируются в одном заказе. Следите за нашими обновлениями!",
+        loyalty_cta: "Получать бонусы в боте",
+        faq_q7: "Какой минимальный заказ?",
+        faq_a7: "Минимальный заказ — 1500 грн за услуги (без выезда). Мелкие вещи, например подушки или стулья, можно добавить к большему заказу.",
+        faq_q8: "Сколько стоит выезд?",
+        faq_a8: "Выезд по Киеву — от 200 грн, точную сумму администратор подтвердит по адресу. Стоимость выезда за город обсуждается индивидуально по телефону.",
+        faq_q9: "Есть ли бонусы для клиентов?",
+        faq_a9: "Да, в нашем Telegram-боте: 5% бонусами после выполненного и оплаченного заказа. Если пригласите друга, он получит скидку 150 грн на первый заказ от 1500 грн, а вы — 150 бонусов после его оплаты.",
         contacts_title: "Контакты", contacts_city: "Киев",
         service_area_list: "Выезжаем также в Бровары, Ирпень, Борисполь, Бучу, Вишневое и Обухов",
         form_title: "Перезвонить в удобное время?", form_name: "Ваше имя", form_phone: "Телефон", form_email: "Почта",
@@ -1012,8 +1102,8 @@
         price_group_chairs: "Кресла и пуфы", price_armchair_soft: "Мягкое кресло", price_armchair_office: "Офисное кресло", price_beanbag: "Кресло-мешок", price_pouf: "Пуф",
         price_group_stools: "Стулья", price_chair_back: "Стул со спинкой", price_chair_noback: "Стул без спинки",
         price_group_mattresses: "Матрасы и спальные принадлежности",
-        price_mattress_kids: "Чистка матраса детского", price_mattress_140: "Чистка матраса двуспального (140×200)",
-        price_mattress_180: "Чистка матраса двуспального (180×200)", price_mattress_200: "Чистка матраса двуспального (200×200)",
+        price_mattress_kids: "Чистка матраса детского", price_mattress_140: "Чистка матраса двуспального 140×200 (2 стороны)",
+        price_mattress_180: "Чистка матраса двуспального 180×200 (2 стороны)", price_mattress_200: "Чистка матраса двуспального 200×200 (2 стороны)",
         price_headboard: "Чистка изголовья кровати", price_bed_perimeter: "Чистка периметра кровати",
         price_group_pillows: "Подушки декоративные / диванные", price_pillow_small: "Маленькая", price_pillow_medium: "Средняя", price_pillow_large: "Большая",
         price_group_carpets: "Ковровые покрытия и шторы (цена за м²)", price_carpet_loop: "Химчистка ковролина",
@@ -1105,6 +1195,25 @@
         faq_a5: "Yes. We use products that are safe for children and pets, and select the formulation individually for your upholstery type.",
         faq_q6: "Which cities do you travel to?",
         faq_a6: "Kyiv, Brovary, Irpin, Boryspil, Bucha, Vyshneve, Obukhiv and nearby towns in the region.",
+        terms_min_t: "Minimum order — 1500 UAH",
+        terms_min_p: "Services total, travel not included. Small items are easy to add to a larger order.",
+        terms_kyiv_t: "Travel within Kyiv — from 200 UAH",
+        terms_kyiv_p: "The administrator confirms the exact amount for your address.",
+        terms_reg_t: "Travel outside Kyiv",
+        terms_reg_p: "The cost is agreed individually by phone.",
+        loyalty_title: "Bonuses for booking via our Telegram bot",
+        loyalty_sub: "The loyalty programme works only in our bot: book through it to earn bonuses.",
+        loyalty_1: "<strong>5% in bonuses</strong> After an order is completed and fully paid we add 5% of the services paid in money. 1 bonus = 1 UAH.",
+        loyalty_2: "<strong>150 UAH off for a friend</strong> Invite a friend with your personal link in the bot: they get 150 UAH off their first order from 1500 UAH.",
+        loyalty_3: "<strong>150 bonuses for you</strong> Once your friend's order is completed and paid, we add 150 bonuses to your account.",
+        loyalty_terms: "Bonuses can cover up to 20% of services in your next order, but the services total after that must stay at 1500 UAH or more. Travel is paid in money. Bonuses are valid for 12 months; bonuses, the friend discount and promotions cannot be combined in one order. Stay tuned for our updates!",
+        loyalty_cta: "Get bonuses in the bot",
+        faq_q7: "What is the minimum order?",
+        faq_a7: "The minimum order is 1500 UAH for services (travel not included). Small items such as pillows or chairs can be added to a larger order.",
+        faq_q8: "How much does travel cost?",
+        faq_a8: "Travel within Kyiv is from 200 UAH; the administrator confirms the exact amount for your address. Travel outside Kyiv is agreed individually by phone.",
+        faq_q9: "Do you have bonuses for clients?",
+        faq_a9: "Yes, in our Telegram bot: 5% in bonuses after a completed and paid order. If you invite a friend, they get 150 UAH off their first order from 1500 UAH, and you get 150 bonuses after they pay.",
         contacts_title: "Contacts", contacts_city: "Kyiv",
         service_area_list: "We also travel to Brovary, Irpin, Boryspil, Bucha, Vyshneve and Obukhiv",
         form_title: "Call back at a convenient time?", form_name: "Your name", form_phone: "Phone", form_email: "Email",
@@ -1129,8 +1238,8 @@
         price_group_chairs: "Armchairs & poufs", price_armchair_soft: "Soft armchair", price_armchair_office: "Office chair", price_beanbag: "Bean bag chair", price_pouf: "Pouf",
         price_group_stools: "Chairs", price_chair_back: "Chair with backrest", price_chair_noback: "Chair without backrest",
         price_group_mattresses: "Mattresses & bedding",
-        price_mattress_kids: "Kids' mattress cleaning", price_mattress_140: "Double mattress cleaning (140×200)",
-        price_mattress_180: "Double mattress cleaning (180×200)", price_mattress_200: "Double mattress cleaning (200×200)",
+        price_mattress_kids: "Kids' mattress cleaning", price_mattress_140: "Double mattress cleaning 140×200 (both sides)",
+        price_mattress_180: "Double mattress cleaning 180×200 (both sides)", price_mattress_200: "Double mattress cleaning 200×200 (both sides)",
         price_headboard: "Headboard cleaning", price_bed_perimeter: "Bed perimeter cleaning",
         price_group_pillows: "Decorative / cushion pillows", price_pillow_small: "Small", price_pillow_medium: "Medium", price_pillow_large: "Large",
         price_group_carpets: "Carpets & curtains (price per m²)", price_carpet_loop: "Carpet tile (loop pile) cleaning",
